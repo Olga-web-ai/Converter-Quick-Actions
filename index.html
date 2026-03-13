@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Converter Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="stage">
+      <section
+        class="phone"
+        id="phone"
+        aria-label="Converter prototype"
+        data-debug="false"
+      >
+        <img
+          id="screen-image"
+          class="screen-image"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+          alt="Converter prototype screen"
+          width="390"
+          height="844"
+          draggable="false"
+        />
+        <div id="dynamic-overlays" class="dynamic-overlays" aria-hidden="true"></div>
+        <div id="fx-overlays" class="fx-overlays" aria-hidden="true"></div>
+        <div id="hotspots" class="hotspots" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
