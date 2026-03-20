@@ -437,6 +437,7 @@ function renderFromFiat(rawValue) {
   resetValidation();
   if (fiatValue >= LARGE_ORDER_THRESHOLD) {
     payLabel.textContent = `You pay · Use PRO above ${formatFiat(LARGE_ORDER_THRESHOLD)}`;
+    getLabel.textContent = `You get · Use PRO above ${formatFiat(LARGE_ORDER_THRESHOLD)}`;
   } else if (hasError) {
     payField.dataset.validation = "error";
     payLabel.textContent = `You pay · Minimum ${formatFiat(MIN_FIAT)}`;
@@ -467,8 +468,8 @@ function renderFromCrypto(rawValue) {
     updateSummary(fiatValue, cryptoAmount, rewardAmount);
 
     resetValidation();
-    getField.dataset.validation = "error";
     getLabel.textContent = `You get · Minimum ${MIN_CRYPTO} ${DEFAULT_ASSET.symbol}`;
+    getField.dataset.validation = "error";
 
     syncAmountLengthClass(fiatInput, fiatInput.value);
     syncAmountLengthClass(cryptoInput, cryptoInput.value);
@@ -498,6 +499,7 @@ function renderFromCrypto(rawValue) {
   resetValidation();
   if (fiatValue >= LARGE_ORDER_THRESHOLD) {
     payLabel.textContent = `You pay · Use PRO above ${formatFiat(LARGE_ORDER_THRESHOLD)}`;
+    getLabel.textContent = `You get · Use PRO above ${formatFiat(LARGE_ORDER_THRESHOLD)}`;
   }
   if (hasError) {
     getField.dataset.validation = "error";
