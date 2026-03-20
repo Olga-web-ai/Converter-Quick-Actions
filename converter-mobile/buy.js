@@ -39,7 +39,12 @@ const assetNetworkMask = document.querySelector('[data-role="asset-network-mask"
 const assetNetworkRow = document.querySelector('[data-role="asset-network-row"]');
 const assetNetworkButtons = [...document.querySelectorAll('[data-role="asset-network"]')];
 const ASSET_MODAL_VERSION = "20260320-2038";
+const isLikelyMobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  navigator.userAgent,
+);
 const isNativeMobileMode =
+  isLikelyMobileUserAgent ||
+  (navigator.maxTouchPoints > 1 && window.innerWidth <= 1024) ||
   window.matchMedia("(pointer: coarse)").matches ||
   window.matchMedia("(hover: none)").matches ||
   window.innerWidth <= 820;
@@ -49,6 +54,40 @@ if (isNativeMobileMode) {
   document.body.classList.add("native-mobile-mode");
   document.documentElement.style.setProperty("--mobile-app-height", `${window.innerHeight}px`);
 }
+
+function lockMobileViewport() {
+  if (!isNativeMobileMode) {
+    return;
+  }
+  document.documentElement.style.setProperty("--mobile-app-height", `${window.innerHeight}px`);
+  window.scrollTo(0, 0);
+}
+
+if (isNativeMobileMode) {
+  window.addEventListener("resize", lockMobileViewport);
+  window.addEventListener("orientationchange", lockMobileViewport);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", () => {
+      window.scrollTo(0, 0);
+    });
+  }
+}
+
+function installPreventScrollFocus(input) {
+  if (!isNativeMobileMode) {
+    return;
+  }
+  input.addEventListener("touchstart", (event) => {
+    if (document.activeElement === input) {
+      return;
+    }
+    event.preventDefault();
+    input.focus({ preventScroll: true });
+  }, { passive: false });
+}
+
+installPreventScrollFocus(fiatInput);
+installPreventScrollFocus(cryptoInput);
 
 const MIN_FIAT = 15;
 const MIN_CRYPTO = 0.0078;
@@ -166,6 +205,7 @@ function updateFiatDecimalPlaceholder() {
 
 function setFieldFocus(field, focused) {
   field.dataset.interaction = focused ? "focus" : "rest";
+  field.classList.toggle("is-focused", focused);
 }
 
 function setKeyboardVisible(visible) {
@@ -454,6 +494,9 @@ fiatInput.addEventListener("focus", () => {
     summaryCard.classList.add("is-hidden");
   }
   setKeyboardVisible(true);
+  if (isNativeMobileMode) {
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+  }
 });
 
 cryptoInput.addEventListener("focus", () => {
@@ -464,6 +507,9 @@ cryptoInput.addEventListener("focus", () => {
     summaryCard.classList.add("is-hidden");
   }
   setKeyboardVisible(true);
+  if (isNativeMobileMode) {
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+  }
 });
 
 fiatInput.addEventListener("blur", () => {
