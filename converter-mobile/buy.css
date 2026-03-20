@@ -89,6 +89,7 @@ body {
   min-height: 100dvh;
   display: block;
   padding: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f7f8 16.346%);
 }
 
 [data-reveal] {
@@ -147,6 +148,7 @@ body {
   box-shadow: none;
   display: flex;
   flex-direction: column;
+  background: transparent;
   padding:
     0
     16px
@@ -193,7 +195,7 @@ body {
   flex: 1;
   margin-top: 12px;
   min-height: 0;
-  padding-bottom: 0;
+  padding-bottom: 244px;
 }
 
 .converter-form {
@@ -977,6 +979,16 @@ body {
   transition:
     opacity 180ms ease,
     transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.phone-frame[data-device-mode="mobile"] .summary-card {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+  width: auto;
+  margin-top: 0;
+  z-index: 5;
 }
 
 .summary-card__large-image {
