@@ -66,9 +66,13 @@ let selectedAssetNetwork = "";
 
 function normalizeFiatInput(value) {
   const normalized = value.replace(/[^\d.,]/g, "").replace(/,/g, "");
+  if (normalized === "") {
+    return "";
+  }
   const hasDot = normalized.includes(".");
   const [wholePart = "", decimalPart = ""] = normalized.split(".");
-  const trimmedWhole = wholePart.replace(/^0+(?=\d)/, "").slice(0, 9) || "0";
+  const wholeClean = wholePart.replace(/^0+(?=\d)/, "").slice(0, 9);
+  const trimmedWhole = wholeClean || (hasDot ? "0" : "");
   const trimmedDecimal = decimalPart.slice(0, 2);
 
   return hasDot ? `${trimmedWhole}.${trimmedDecimal}` : trimmedWhole;
@@ -76,9 +80,13 @@ function normalizeFiatInput(value) {
 
 function normalizeCryptoInput(value) {
   const normalized = value.replace(/[^\d.,]/g, "").replace(",", ".");
+  if (normalized === "") {
+    return "";
+  }
   const hasDot = normalized.includes(".");
   const [wholePart = "", decimalPart = ""] = normalized.split(".");
-  const trimmedWhole = wholePart.replace(/^0+(?=\d)/, "") || "0";
+  const wholeClean = wholePart.replace(/^0+(?=\d)/, "");
+  const trimmedWhole = wholeClean || (hasDot ? "0" : "");
   const trimmedDecimal = decimalPart.slice(0, 8);
 
   return hasDot ? `${trimmedWhole}.${trimmedDecimal}` : trimmedWhole;
@@ -114,6 +122,9 @@ function formatReward(value) {
 }
 
 function formatFiatDisplay(rawValue) {
+  if (rawValue === "") {
+    return "";
+  }
   const [wholePart = "0", decimalPart = ""] = rawValue.split(".");
   const formattedWhole = Number(wholePart || "0").toLocaleString("en-US");
 
@@ -435,6 +446,9 @@ cryptoInput.addEventListener("focus", () => {
 
 fiatInput.addEventListener("blur", () => {
   if (activeField === "pay") {
+    if (fiatRaw === "") {
+      renderFromFiat("0");
+    }
     setFieldFocus(payField, false);
     summaryCard.classList.remove("is-hidden");
     setKeyboardVisible(false);
@@ -443,6 +457,9 @@ fiatInput.addEventListener("blur", () => {
 
 cryptoInput.addEventListener("blur", () => {
   if (activeField === "get") {
+    if (cryptoRaw === "") {
+      renderFromCrypto("0");
+    }
     setFieldFocus(getField, false);
     summaryCard.classList.remove("is-hidden");
     setKeyboardVisible(false);

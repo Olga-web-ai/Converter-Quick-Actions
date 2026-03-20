@@ -456,6 +456,11 @@ body {
 }
 
 .asset-selector {
+  appearance: none;
+  -webkit-appearance: none;
+  color: #1a1a1d;
+  text-decoration: none;
+  text-align: left;
   flex: 0 0 auto;
   min-width: 126px;
   max-width: 45%;
@@ -636,6 +641,7 @@ body {
 }
 
 .asset-selector__label {
+  color: inherit;
   font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 20px;
   font-weight: 600;
