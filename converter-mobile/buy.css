@@ -57,6 +57,20 @@ body {
     var(--page-bg);
 }
 
+html.native-mobile-mode,
+body.native-mobile-mode {
+  min-height: var(--mobile-app-height, 100svh);
+  height: var(--mobile-app-height, 100svh);
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f7f8 16.346%);
+}
+
+body.native-mobile-mode {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+}
+
 body {
   font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--ink);
@@ -86,10 +100,12 @@ body {
 }
 
 .app-shell[data-device-mode="mobile"] {
-  min-height: 100dvh;
+  min-height: var(--mobile-app-height, 100svh);
+  height: var(--mobile-app-height, 100svh);
   display: block;
   padding: 0;
   background: linear-gradient(180deg, #ffffff 0%, #f6f7f8 16.346%);
+  overflow: hidden;
 }
 
 [data-reveal] {
@@ -143,17 +159,18 @@ body {
 
 .phone-frame[data-device-mode="mobile"] {
   width: 100%;
-  min-height: 100dvh;
+  min-height: var(--mobile-app-height, 100svh);
+  height: var(--mobile-app-height, 100svh);
   border-radius: 0;
   box-shadow: none;
   display: flex;
   flex-direction: column;
-  background: transparent;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f7f8 16.346%);
   padding:
     0
     16px
     calc(env(safe-area-inset-bottom, 0px) + 20px);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .header-art {
@@ -175,6 +192,7 @@ body {
   height: 50px;
   margin-top: calc(env(safe-area-inset-top, 0px) + 8px);
   overflow: hidden;
+  flex: 0 0 auto;
 }
 
 .phone-frame[data-device-mode="mobile"] .header-art__image {
@@ -196,6 +214,7 @@ body {
   margin-top: 12px;
   min-height: 0;
   padding-bottom: 244px;
+  overflow: hidden;
 }
 
 .converter-form {
@@ -989,6 +1008,12 @@ body {
   width: auto;
   margin-top: 0;
   z-index: 5;
+}
+
+.phone-frame[data-device-mode="mobile"][data-keyboard="visible"] .summary-card {
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
 }
 
 .summary-card__large-image {

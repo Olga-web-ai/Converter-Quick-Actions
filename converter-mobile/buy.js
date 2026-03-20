@@ -44,6 +44,12 @@ const isNativeMobileMode =
   window.matchMedia("(hover: none)").matches ||
   window.innerWidth <= 820;
 
+if (isNativeMobileMode) {
+  document.documentElement.classList.add("native-mobile-mode");
+  document.body.classList.add("native-mobile-mode");
+  document.documentElement.style.setProperty("--mobile-app-height", `${window.innerHeight}px`);
+}
+
 const MIN_FIAT = 15;
 const MIN_CRYPTO = 0.0078;
 const REWARD_RATE = 0.0115;
@@ -444,7 +450,9 @@ fiatInput.addEventListener("focus", () => {
   activeField = "pay";
   setFieldFocus(payField, true);
   setFieldFocus(getField, false);
-  summaryCard.classList.add("is-hidden");
+  if (!isNativeMobileMode) {
+    summaryCard.classList.add("is-hidden");
+  }
   setKeyboardVisible(true);
 });
 
@@ -452,7 +460,9 @@ cryptoInput.addEventListener("focus", () => {
   activeField = "get";
   setFieldFocus(getField, true);
   setFieldFocus(payField, false);
-  summaryCard.classList.add("is-hidden");
+  if (!isNativeMobileMode) {
+    summaryCard.classList.add("is-hidden");
+  }
   setKeyboardVisible(true);
 });
 
@@ -462,7 +472,9 @@ fiatInput.addEventListener("blur", () => {
       renderFromFiat("0");
     }
     setFieldFocus(payField, false);
-    summaryCard.classList.remove("is-hidden");
+    if (!isNativeMobileMode) {
+      summaryCard.classList.remove("is-hidden");
+    }
     setKeyboardVisible(false);
   }
 });
@@ -473,7 +485,9 @@ cryptoInput.addEventListener("blur", () => {
       renderFromCrypto("0");
     }
     setFieldFocus(getField, false);
-    summaryCard.classList.remove("is-hidden");
+    if (!isNativeMobileMode) {
+      summaryCard.classList.remove("is-hidden");
+    }
     setKeyboardVisible(false);
   }
 });
