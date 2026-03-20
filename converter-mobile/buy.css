@@ -298,10 +298,8 @@ body {
 .converter-field[data-interaction="focus"] {
   position: relative;
   z-index: 2;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(180deg, #a698ff 0%, #a698ff 100%) border-box;
+  border: 1px solid #a698ff;
+  background: transparent;
   box-shadow: none;
 }
 
@@ -310,10 +308,8 @@ body {
 }
 
 .converter-field[data-validation="error"][data-interaction="focus"] {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(180deg, rgba(255, 90, 74, 0.82) 0%, rgba(255, 90, 74, 0.82) 100%) border-box;
+  border: 1px solid rgba(255, 90, 74, 0.82);
+  background: transparent;
   box-shadow: none;
 }
 
