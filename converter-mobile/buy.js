@@ -39,6 +39,10 @@ const assetNetworkMask = document.querySelector('[data-role="asset-network-mask"
 const assetNetworkRow = document.querySelector('[data-role="asset-network-row"]');
 const assetNetworkButtons = [...document.querySelectorAll('[data-role="asset-network"]')];
 const ASSET_MODAL_VERSION = "20260320-2038";
+const isNativeMobileMode =
+  window.matchMedia("(pointer: coarse)").matches ||
+  window.matchMedia("(hover: none)").matches ||
+  window.innerWidth <= 820;
 
 const MIN_FIAT = 15;
 const MIN_CRYPTO = 0.0078;
@@ -63,6 +67,9 @@ let selectedFiat = FIAT_OPTIONS[0];
 let assetCategory = "all";
 let assetNetworkMenuOpen = false;
 let selectedAssetNetwork = "";
+
+phoneFrame.dataset.deviceMode = isNativeMobileMode ? "mobile" : "desktop";
+appShell.dataset.deviceMode = isNativeMobileMode ? "mobile" : "desktop";
 
 function normalizeFiatInput(value) {
   const normalized = value.replace(/[^\d.,]/g, "").replace(/,/g, "");
@@ -156,6 +163,11 @@ function setFieldFocus(field, focused) {
 }
 
 function setKeyboardVisible(visible) {
+  if (isNativeMobileMode) {
+    inputKeyboard.classList.remove("is-visible");
+    phoneFrame.dataset.keyboard = "hidden";
+    return;
+  }
   inputKeyboard.classList.toggle("is-visible", visible);
   phoneFrame.dataset.keyboard = visible ? "visible" : "hidden";
 }
