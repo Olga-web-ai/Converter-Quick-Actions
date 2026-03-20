@@ -304,7 +304,11 @@ body {
 }
 
 .converter-field[data-validation="error"] {
-  box-shadow: 0 0 0 1px rgba(255, 90, 74, 0.68);
+  border: 1px solid rgba(255, 90, 74, 0.68);
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(180deg, rgba(255, 90, 74, 0.68) 0%, rgba(255, 90, 74, 0.68) 100%) border-box;
+  box-shadow: none;
 }
 
 .converter-field[data-validation="error"][data-interaction="focus"] {

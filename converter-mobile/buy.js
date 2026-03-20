@@ -453,6 +453,31 @@ function renderFromCrypto(rawValue) {
   activeField = "get";
   cryptoRaw = normalizeCryptoInput(rawValue);
 
+  if (cryptoRaw === "") {
+    const fiatValue = 0;
+    const cryptoAmount = 0;
+    const rewardAmount = 0;
+
+    cryptoInput.value = "";
+    fiatRaw = "0";
+    fiatInput.value = formatFiatDisplay(fiatRaw);
+    syncAmountLengthClass(fiatDecimalPlaceholder, fiatInput.value);
+    syncAmountLengthClass(fiatMeasure, fiatInput.value);
+    updateFiatDecimalPlaceholder();
+    updateSummary(fiatValue, cryptoAmount, rewardAmount);
+
+    resetValidation();
+    getField.dataset.validation = "error";
+    getLabel.textContent = `You get · Minimum ${MIN_CRYPTO} ${DEFAULT_ASSET.symbol}`;
+
+    syncAmountLengthClass(fiatInput, fiatInput.value);
+    syncAmountLengthClass(cryptoInput, cryptoInput.value);
+    syncQuickActions(fiatValue);
+    updateFiatSelector();
+    updateQuickActionLabels();
+    return;
+  }
+
   const cryptoAmount = parseRawNumber(cryptoRaw);
   const fiatValue = cryptoAmount * DEFAULT_ASSET.price;
   const rewardAmount = fiatValue * REWARD_RATE;
