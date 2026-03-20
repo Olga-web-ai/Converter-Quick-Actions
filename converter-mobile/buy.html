@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Converter Buy Page</title>
+    <link rel="stylesheet" href="./buy.css?v=20260320-2120" />
+  </head>
+  <body>
+    <main class="app-shell" data-stage="ready">
+      <section class="phone-frame" aria-label="Converter buy page prototype">
+        <div class="header-art" data-reveal="nav" aria-hidden="true">
+          <img class="header-art__image" src="./assets/ui/header-top@4x.png" alt="" />
+        </div>
+
+        <section class="converter-layout">
+          <form class="converter-form" novalidate data-reveal="fields">
+            <article
+              class="converter-field converter-field--pay"
+              data-field="pay"
+              data-interaction="rest"
+              data-validation="normal"
+            >
+              <div class="converter-field__header">
+                <p class="converter-field__label" data-role="label">You pay</p>
+              </div>
+
+              <div class="converter-field__body">
+                <label class="amount-editor amount-editor--fiat">
+                  <span class="sr-only">Amount to pay</span>
+                  <input
+                    id="fiat-amount"
+                    class="amount-editor__input"
+                    type="text"
+                    inputmode="decimal"
+                    value="100"
+                    autocomplete="off"
+                  />
+                  <span class="amount-editor__decimal-placeholder" data-role="fiat-decimal-placeholder" aria-hidden="true"></span>
+                  <span class="amount-editor__measure" data-role="fiat-measure" aria-hidden="true"></span>
+                </label>
+
+                <button class="asset-selector" type="button" data-role="fiat-selector" aria-label="Selected fiat currency">
+                  <span class="asset-selector__coin asset-selector__coin--eu" data-role="fiat-selector-coin">
+                    <span class="asset-selector__eu-stars" aria-hidden="true">
+                      <i></i><i></i><i></i><i></i><i></i><i></i>
+                      <i></i><i></i><i></i><i></i><i></i><i></i>
+                    </span>
+                  </span>
+                  <span class="asset-selector__label" data-role="fiat-selector-label">EUR</span>
+                  <span class="asset-selector__chevron" aria-hidden="true">
+                    <svg viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L4 4L7 1" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <div class="quick-actions" aria-label="Suggested amounts">
+                <button class="quick-action" type="button" data-amount="50">€50</button>
+                <button class="quick-action is-active" type="button" data-amount="100">€100</button>
+                <button class="quick-action" type="button" data-amount="150">€150</button>
+                <button class="quick-action" type="button" data-amount="200">€200</button>
+              </div>
+
+            </article>
+
+            <article
+              class="converter-field converter-field--get"
+              data-field="get"
+              data-interaction="rest"
+              data-validation="normal"
+            >
+              <div class="converter-field__header">
+                <p class="converter-field__label" data-role="label">You get</p>
+              </div>
+
+              <div class="converter-field__body">
+                <label class="amount-editor amount-editor--crypto">
+                  <span class="sr-only">Amount to get</span>
+                  <input
+                    id="crypto-amount"
+                    class="amount-editor__input amount-editor__input--crypto"
+                    type="text"
+                    inputmode="decimal"
+                    value="0.0533"
+                    autocomplete="off"
+                  />
+                </label>
+
+                <button class="asset-selector asset-selector--token" type="button" data-role="crypto-selector" aria-label="Selected crypto asset">
+                  <span class="asset-selector__coin asset-selector__coin--eth">
+                    <img src="./assets/icons/tokens/eth.png" alt="" aria-hidden="true" />
+                    <img
+                      class="asset-selector__network"
+                      src="./assets/icons/networks/arbitrum-figma.svg"
+                      style="left:25px; top:24px; width:14px; height:14px;"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span class="asset-selector__label">ETH</span>
+                  <span class="asset-selector__chevron" aria-hidden="true">
+                    <svg viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L4 4L7 1" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <div class="converter-field__meta-row">
+                <p class="converter-field__support converter-field__support--hidden" data-role="fiat-equivalent">€100.00</p>
+                <span class="reward-pill" aria-label="Boost points reward" data-role="reward-pill">
+                  <span class="reward-pill__value" data-role="reward-value">+€1.15</span>
+                  <span class="reward-pill__icon" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.40097 0C10.3883 0.000220152 11.999 1.61168 11.999 3.59903C11.9988 4.5214 11.651 5.36228 11.0802 5.99903C11.6514 6.63606 12 7.47801 12 8.40097C11.9995 10.3883 10.3874 12 8.39999 12C7.47759 11.9998 6.63579 11.652 5.99903 11.0812C5.36219 11.6507 4.52155 11.998 3.6 11.998C1.61212 11.9976 0.000307229 10.3857 0 8.39804C0 7.47647 0.346362 6.6349 0.915866 5.99804C0.346718 5.36145 0.000127712 4.52108 0 3.6C0 1.61201 1.61206 0.000232263 3.6 0C4.52198 3.78915e-05 5.36314 0.346794 6 0.916844C6.6367 0.346528 7.47895 0.000107614 8.40097 0ZM5.84084 2.49959C5.84084 3.39053 5.43696 4.24517 4.717 4.87518C3.99698 5.5052 3.01989 5.8594 2.00162 5.8594V6.13864C3.01989 6.13864 3.99698 6.49284 4.717 7.12286C5.43696 7.75288 5.84084 8.60752 5.84084 9.49846H6.16111C6.16111 8.60747 6.5659 7.7529 7.28592 7.12286C8.00588 6.49298 8.98223 6.13869 9.99932 6.13864V5.8594C8.98223 5.85934 8.00588 5.50506 7.28592 4.87518C6.5659 4.24515 6.16111 3.39058 6.16111 2.49959H5.84084Z"/>
+                    </svg>
+                  </span>
+                </span>
+              </div>
+            </article>
+          </form>
+
+          <section class="summary-card" aria-label="Order summary" data-reveal="summary">
+            <img
+              class="summary-card__large-image"
+              src="./assets/ui/high-value-order-details-frame@2x.png"
+              alt=""
+              aria-hidden="true"
+            />
+            <div class="summary-card__header">
+              <div class="summary-card__asset">
+                <span class="summary-card__coin">
+                  <img src="./assets/icons/tokens/eth.png" alt="" aria-hidden="true" />
+                  <img
+                    class="summary-card__network"
+                    src="./assets/icons/networks/arbitrum-figma.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </span>
+                <div class="summary-card__text">
+                  <p class="summary-card__title" data-role="summary-title">0.0533 ETH for €100.00</p>
+                  <p class="summary-card__subtitle" data-role="summary-reward">+€1.15 Boost Points included</p>
+                  <p class="summary-card__large-copy" data-role="summary-large-copy">
+                    For orders over €50,000, a manager will help you complete the transaction with better conditions.
+                  </p>
+                </div>
+              </div>
+
+              <button class="summary-card__toggle" type="button" aria-label="Expand order details">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M5 7L8 10L11 7" />
+                </svg>
+              </button>
+            </div>
+
+            <button class="summary-card__cta" type="button" aria-disabled="true" data-role="summary-cta">Pay €100.00</button>
+            <button class="summary-card__secondary" type="button" data-role="boost-toggle" aria-pressed="true">I don’t need Boost Points</button>
+          </section>
+
+          <section class="input-keyboard" data-role="input-keyboard" aria-label="Numeric keyboard">
+            <div class="input-keyboard__topbar">
+              <img
+                class="input-keyboard__topbar-image"
+                src="./assets/ui/keyboard-accessory-tight@2x.png"
+                alt=""
+                aria-hidden="true"
+              />
+              <button class="input-keyboard__confirm-hitbox" type="button" data-role="keyboard-confirm" aria-label="Confirm amount"></button>
+            </div>
+            <div class="input-keyboard__grid">
+              <button class="input-keyboard__key" type="button" data-key="1"><span class="input-keyboard__digit">1</span></button>
+              <button class="input-keyboard__key" type="button" data-key="2"><span class="input-keyboard__digit">2</span><span class="input-keyboard__letters">ABC</span></button>
+              <button class="input-keyboard__key" type="button" data-key="3"><span class="input-keyboard__digit">3</span><span class="input-keyboard__letters">DEF</span></button>
+              <button class="input-keyboard__key" type="button" data-key="4"><span class="input-keyboard__digit">4</span><span class="input-keyboard__letters">GHI</span></button>
+              <button class="input-keyboard__key" type="button" data-key="5"><span class="input-keyboard__digit">5</span><span class="input-keyboard__letters">JKL</span></button>
+              <button class="input-keyboard__key" type="button" data-key="6"><span class="input-keyboard__digit">6</span><span class="input-keyboard__letters">MNO</span></button>
+              <button class="input-keyboard__key" type="button" data-key="7"><span class="input-keyboard__digit">7</span><span class="input-keyboard__letters">PQRS</span></button>
+              <button class="input-keyboard__key" type="button" data-key="8"><span class="input-keyboard__digit">8</span><span class="input-keyboard__letters">TUV</span></button>
+              <button class="input-keyboard__key" type="button" data-key="9"><span class="input-keyboard__digit">9</span><span class="input-keyboard__letters">WXYZ</span></button>
+              <div class="input-keyboard__spacer" aria-hidden="true"></div>
+              <button class="input-keyboard__key" type="button" data-key="0"><span class="input-keyboard__digit">0</span></button>
+              <button class="input-keyboard__key input-keyboard__key--icon" type="button" data-key="backspace" aria-label="Delete">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M10 7H19C20.1046 7 21 7.89543 21 9V15C21 16.1046 20.1046 17 19 17H10L4 12L10 7Z" />
+                  <path d="M12.5 10L16.5 14" />
+                  <path d="M16.5 10L12.5 14" />
+                </svg>
+              </button>
+            </div>
+          </section>
+
+          <section class="currency-modal" data-role="currency-modal" aria-hidden="true">
+            <button class="currency-modal__dismiss" type="button" data-role="currency-modal-close" aria-label="Close currency picker">
+              <img class="currency-modal__image" src="./assets/screens/select-currency.png" alt="Currency picker screen" />
+            </button>
+          </section>
+
+          <section class="asset-modal" data-role="asset-modal" aria-hidden="true">
+            <div class="asset-modal__sheet" aria-label="Select asset">
+              <img
+                class="asset-modal__image"
+                data-role="asset-modal-image"
+                src="./assets/screens/select-asset-exact.png"
+                alt="Asset picker screen"
+              />
+              <button class="asset-modal__close-hitbox" type="button" data-role="asset-modal-close" aria-label="Close asset picker"></button>
+              <button class="asset-modal__hitbox asset-modal__hitbox--all" type="button" data-role="asset-filter" data-filter="all" aria-label="All assets"></button>
+              <button class="asset-modal__hitbox asset-modal__hitbox--stable" type="button" data-role="asset-filter" data-filter="stablecoins" aria-label="Stablecoins filter"></button>
+              <button class="asset-modal__hitbox asset-modal__hitbox--crypto" type="button" data-role="asset-filter" data-filter="crypto" aria-label="Crypto filter"></button>
+              <button class="asset-modal__hitbox asset-modal__hitbox--network" type="button" data-role="asset-filter" data-filter="network" aria-label="Network filter"></button>
+              <button class="asset-modal__selected-clear-hitbox" type="button" data-role="asset-network-clear" aria-label="Clear selected network" hidden></button>
+              <div class="asset-modal__network-trigger" data-role="asset-network-trigger" aria-hidden="true">
+                <img class="asset-modal__network-trigger-icon" data-role="asset-network-trigger-icon" src="./assets/icons/networks/arbitrum.png" alt="" hidden />
+                <span class="asset-modal__network-trigger-label" data-role="asset-network-trigger-label">Network</span>
+                <span class="asset-modal__network-trigger-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L4 4L7 1" />
+                  </svg>
+                </span>
+              </div>
+
+              <div class="asset-modal__network-mask" data-role="asset-network-mask" hidden aria-hidden="true"></div>
+              <div class="asset-modal__network-hotspots" data-role="asset-network-row" hidden>
+                <div class="asset-modal__network-track">
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="solana" aria-label="Solana" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/solana.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">Solana</span>
+                  </button>
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="arbitrum" aria-label="Arbitrum" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/arbitrum.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">Arbitrum</span>
+                  </button>
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="polygon" aria-label="Polygon" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/polygon.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">Polygon</span>
+                  </button>
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="bsc" aria-label="BNB Chain" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/binancesmartchain.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">BNB Chain</span>
+                  </button>
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="ethereum" aria-label="Ethereum" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/ethereum.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">Ethereum</span>
+                  </button>
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="base" aria-label="Base" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/base.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">Base</span>
+                  </button>
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="optimism" aria-label="Optimism" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/optimism.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">Optimism</span>
+                  </button>
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="near" aria-label="Near" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/near.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">Near</span>
+                  </button>
+                  <button class="asset-modal__network-chip" type="button" data-role="asset-network" data-network="stellar" aria-label="Stellar" aria-pressed="false">
+                    <img class="asset-modal__network-icon" src="./assets/icons/networks/stellar.png" alt="" aria-hidden="true" />
+                    <span class="asset-modal__network-label">Stellar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <div class="browser-nav" aria-hidden="true">
+          <img class="browser-nav__image" src="./assets/ui/browser-nav-tight@2x.png" alt="" />
+        </div>
+      </section>
+    </main>
+
+    <script src="./buy.js?v=20260320-2120"></script>
+  </body>
+</html>

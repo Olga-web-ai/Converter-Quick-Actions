@@ -1,0 +1,599 @@
+:root {
+  color-scheme: light;
+  --page-bg: #eef0f4;
+  --debug: rgba(91, 61, 255, 0.28);
+  --debug-border: rgba(91, 61, 255, 0.6);
+  --field-fill: #ffffff;
+  --sheet-fill: #ffffff;
+  --button-fill: #5f39ff;
+  --text: #1b1b1b;
+  --muted: #6e7074;
+  --error: #ff4d3f;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@font-face {
+  font-family: "ES Rebond Grotesque";
+  src: url("./assets/fonts/ESRebondGrotesque-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "ES Rebond Grotesque";
+  src: url("./assets/fonts/ESRebondGrotesque-Semibold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("./assets/fonts/SuisseIntl-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Suisse Intl";
+  src: url("./assets/fonts/SuisseIntl-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--page-bg);
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 24px 12px;
+  font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+.phone {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.screen-image {
+  display: block;
+  width: 390px;
+  height: 844px;
+  pointer-events: none;
+}
+
+.hotspots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dynamic-overlays,
+.fx-overlays {
+  position: absolute;
+  inset: 0;
+}
+
+.dynamic-overlays {
+  pointer-events: auto;
+}
+
+.fx-overlays {
+  pointer-events: none;
+}
+
+.hotspot {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.phone[data-debug="true"] .hotspot {
+  background: var(--debug);
+  outline: 1px solid var(--debug-border);
+  outline-offset: -1px;
+  border-radius: 10px;
+}
+
+.value-mask,
+.label-mask {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.value-mask {
+  background: var(--field-fill);
+}
+
+.label-mask {
+  background: transparent;
+  overflow: hidden;
+}
+
+.timer-row-mask {
+  background: #fff;
+}
+
+.value-mask.summary {
+  background: var(--sheet-fill);
+}
+
+.value-mask.button {
+  justify-content: center;
+  background: var(--button-fill);
+  border-radius: 14px;
+}
+
+.value-mask.asset-chip-mask {
+  background: #f4f4f5;
+  border-radius: 999px;
+}
+
+.value-mask.focus-surface {
+  background: rgba(246, 247, 248, 1);
+  border-radius: 4px;
+}
+
+.value-mask.points-badge-surface {
+  background: #f7c81d;
+  border-radius: 999px;
+}
+
+.asset-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 0 14px 0 6px;
+}
+
+.chip-icon-wrap {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+}
+
+.chip-token-icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.chip-network-icon {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.chip-label {
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text);
+}
+
+.chip-chevron {
+  margin-left: auto;
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1;
+  color: #3d4047;
+}
+
+.asset-summary-icon {
+  background: transparent;
+}
+
+.summary-token-icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.summary-network-icon {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.value-text {
+  color: var(--text);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.value-text.display {
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 48px;
+}
+
+.value-text.summary {
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.value-text.button {
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fff;
+}
+
+.value-text.muted {
+  color: var(--muted);
+}
+
+.value-text.error {
+  color: var(--error);
+}
+
+.value-text.helper {
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--muted);
+}
+
+.value-text.helper.error {
+  color: var(--error);
+}
+
+.value-text.points {
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+}
+
+.value-text.points-badge,
+.value-text.points-inline {
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+  color: #d68b00;
+}
+
+.value-text.timer {
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 15px;
+  color: #70727a;
+}
+
+.timer-ring {
+  position: absolute;
+  display: block;
+}
+
+.timer-ring svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.timer-ring-track,
+.timer-ring-progress {
+  fill: none;
+  stroke-width: 1.7;
+}
+
+.timer-ring-track {
+  stroke: rgba(112, 114, 122, 0.22);
+}
+
+.timer-ring-progress {
+  stroke: rgba(112, 114, 122, 0.72);
+  stroke-linecap: round;
+  transform-origin: 50% 50%;
+  transform: rotate(-90deg);
+  animation: timerRingCountdown 5s linear infinite;
+}
+
+.asset-picker-layer,
+.asset-list-layer {
+  background: #fff;
+  overflow: hidden;
+}
+
+.asset-picker-layer {
+  position: absolute;
+  pointer-events: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.asset-picker-layer::-webkit-scrollbar {
+  display: none;
+}
+
+.asset-picker-scroll {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: max-content;
+  padding: 0 12px;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.asset-list-layer {
+  position: absolute;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.asset-list-layer::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip-ui {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 10px;
+  background: #f1f1f2;
+  box-shadow: inset 0 0 0 1px #e1e1e3;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.filter-chip-ui.selected {
+  background: #0d0d10;
+  box-shadow: none;
+}
+
+.filter-chip-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+
+.filter-chip-text {
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  color: #1c1d22;
+}
+
+.filter-chip-ui.selected .filter-chip-text {
+  color: #fff;
+}
+
+.filter-chip-close {
+  margin-left: auto;
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+}
+
+.asset-section-title {
+  position: absolute;
+  left: 12px;
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 17px;
+  color: #1a1a1a;
+}
+
+.asset-row-ui {
+  position: absolute;
+  left: 12px;
+  width: 366px;
+  height: 64px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.asset-row-token {
+  width: 40px;
+  height: 40px;
+}
+
+.asset-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.asset-row-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.asset-row-symbol {
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text);
+}
+
+.asset-row-network-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 18px;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: #f7f7f7;
+  box-shadow: inset 0 0 0 1px #e5e5e6;
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 15px;
+  color: #70727a;
+}
+
+.asset-row-network-icon {
+  width: 10px;
+  height: 10px;
+}
+
+.asset-row-subtitle {
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  color: #9a9ea8;
+}
+
+.asset-row-price {
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--text);
+}
+
+.screen-slice-mask {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.screen-slice-mask > img {
+  position: absolute;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.caret {
+  position: absolute;
+  width: 2px;
+  border-radius: 999px;
+  background: #4e47ff;
+  animation: blink 1s steps(1, end) infinite;
+}
+
+
+.key-flash {
+  position: absolute;
+  border-radius: 12px;
+  background: rgba(120, 125, 135, 0.24);
+  box-shadow: inset 0 0 0 1px rgba(120, 125, 135, 0.12);
+  animation: keyflash 0.16s ease-out forwards;
+}
+
+.is-transitioning .screen-image {
+  opacity: 0.995;
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 0;
+  }
+
+  .phone {
+    width: 100vw;
+    height: calc(100vw * 844 / 390);
+  }
+
+  .screen-image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes keyflash {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.98);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes timerRingCountdown {
+  0% {
+    stroke-dasharray: 31.42 0;
+    opacity: 0.95;
+  }
+
+  92% {
+    stroke-dasharray: 0 31.42;
+    opacity: 0.95;
+  }
+
+  100% {
+    stroke-dasharray: 0 31.42;
+    opacity: 0;
+  }
+}
