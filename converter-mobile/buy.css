@@ -956,6 +956,15 @@ body {
   line-height: 16px;
 }
 
+.converter-field--get[data-validation="error"] .reward-pill {
+  background: linear-gradient(180deg, #f0f1f4 0%, #e3e5ea 100%);
+  color: #9ea3ad;
+}
+
+.converter-field--get[data-validation="error"] .reward-pill .reward-pill__icon path {
+  fill: #aeb3bd;
+}
+
 .reward-pill__value {
   display: inline-block;
   transform: translateY(-0.2px);
