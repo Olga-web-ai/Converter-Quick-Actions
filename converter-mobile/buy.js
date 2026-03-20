@@ -339,7 +339,8 @@ function setFieldHover(field, hovering) {
 
 function syncQuickActions(amount) {
   quickActions.forEach((button) => {
-    button.classList.toggle("is-active", Number(button.dataset.amount) === amount);
+    const isActive = !isNativeMobileMode && Number(button.dataset.amount) === amount;
+    button.classList.toggle("is-active", isActive);
   });
 }
 
