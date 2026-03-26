@@ -790,10 +790,10 @@ getField.addEventListener("click", (event) => {
 function runEntranceSequence() {
   const steps = [
     { stage: "nav", delay: 0 },
-    { stage: "fields", delay: 140 },
-    { stage: "content", delay: 360 },
-    { stage: "summary", delay: 620 },
-    { stage: "ready", delay: 860 },
+    { stage: "fields", delay: 120 },
+    { stage: "content", delay: 250 },
+    { stage: "summary", delay: 430 },
+    { stage: "ready", delay: 560 },
   ];
 
   steps.forEach(({ stage, delay }) => {
