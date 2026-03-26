@@ -983,6 +983,16 @@ body {
     linear-gradient(180deg, #e7e8eb 0%, #d8dbe0 100%) border-box;
 }
 
+.native-mobile-mode .quick-action.is-active,
+.native-mobile-mode .quick-action.is-active:hover,
+.native-mobile-mode .quick-action:active,
+.native-mobile-mode .quick-action.is-active:active {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(180deg, #ebebeb 0%, #ebebeb 100%) border-box;
+  box-shadow: none;
+}
+
 .converter-field--pay[data-interaction="focus"] .quick-action {
   background:
     linear-gradient(#ffffff, #ffffff) padding-box,
@@ -1450,8 +1460,9 @@ body {
 .currency-modal__currency-hitbox--eur {
   left: 20px;
   right: 20px;
-  top: 224px;
-  height: 58px;
+  top: 284px;
+  height: 72px;
+  z-index: 2;
 }
 
 .currency-modal__currency-hitbox--idr {
