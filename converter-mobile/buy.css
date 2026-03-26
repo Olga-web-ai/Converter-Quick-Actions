@@ -1393,12 +1393,42 @@ body {
 }
 
 .currency-modal__dismiss {
+  display: none;
+}
+
+.currency-modal__sheet {
   position: absolute;
   inset: 0;
+}
+
+.currency-modal__close-hitbox,
+.currency-modal__currency-hitbox {
+  position: absolute;
   border: 0;
   padding: 0;
   background: transparent;
   cursor: pointer;
+}
+
+.currency-modal__close-hitbox {
+  top: 72px;
+  right: 18px;
+  width: 56px;
+  height: 56px;
+}
+
+.currency-modal__currency-hitbox--eur {
+  left: 20px;
+  right: 20px;
+  top: 224px;
+  height: 58px;
+}
+
+.currency-modal__currency-hitbox--idr {
+  left: 20px;
+  right: 20px;
+  top: 576px;
+  height: 58px;
 }
 
 .currency-modal__image {

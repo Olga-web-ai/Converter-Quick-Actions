@@ -27,6 +27,7 @@ const keyboardKeys = [...document.querySelectorAll(".input-keyboard__key")];
 const quickActions = [...document.querySelectorAll(".quick-action")];
 const currencyModal = document.querySelector('[data-role="currency-modal"]');
 const currencyModalClosers = [...document.querySelectorAll('[data-role="currency-modal-close"]')];
+const currencyOptionButtons = [...document.querySelectorAll('[data-role="currency-option"]')];
 const assetModal = document.querySelector('[data-role="asset-modal"]');
 const assetModalImage = document.querySelector('[data-role="asset-modal-image"]');
 const assetModalClosers = [...document.querySelectorAll('[data-role="asset-modal-close"]')];
@@ -437,6 +438,19 @@ function updateQuickActionLabels() {
   });
 }
 
+function selectFiatCurrency(code) {
+  const matchedFiat = FIAT_OPTIONS.find((option) => option.code === code);
+  if (!matchedFiat) {
+    return;
+  }
+
+  selectedFiat = matchedFiat;
+  updateFiatSelector();
+  updateQuickActionLabels();
+  renderFromFiat(fiatRaw || "100");
+  closeCurrencyModal();
+}
+
 function updateSummary(fiatValue, cryptoAmount, rewardAmount) {
   const isLargeOrder = fiatValue >= LARGE_ORDER_THRESHOLD;
   const rewardsVisible = boostPointsEnabled && !isLargeOrder;
@@ -650,6 +664,12 @@ cryptoSelector.addEventListener("click", () => {
 currencyModalClosers.forEach((button) => {
   button.addEventListener("click", () => {
     closeCurrencyModal();
+  });
+});
+
+currencyOptionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    selectFiatCurrency(button.dataset.currency);
   });
 });
 
