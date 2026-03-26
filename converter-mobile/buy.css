@@ -349,7 +349,7 @@ body {
 
 .converter-field__body {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 8px;
   margin-top: 4px;
@@ -373,7 +373,8 @@ body {
   min-width: 0;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  height: 48px;
 }
 
 .amount-editor--fiat {
@@ -434,12 +435,12 @@ body {
 
 .amount-editor__input.is-xlong,
 .amount-display.is-xlong {
-  font-size: clamp(20px, 4.4vw, 25px);
+  font-size: clamp(21px, 4.6vw, 26px);
 }
 
 .amount-editor__input.is-xxlong,
 .amount-display.is-xxlong {
-  font-size: clamp(16px, 4vw, 21px);
+  font-size: clamp(17px, 4.2vw, 22px);
 }
 
 .converter-field--pay .amount-editor__input.is-medium {
@@ -453,12 +454,12 @@ body {
 }
 
 .converter-field--pay .amount-editor__input.is-xlong {
-  font-size: 20px;
+  font-size: 21px;
   line-height: 48px;
 }
 
 .converter-field--pay .amount-editor__input.is-xxlong {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 48px;
 }
 
@@ -473,12 +474,12 @@ body {
 }
 
 .converter-field--get .amount-display.is-xlong {
-  font-size: 20px;
+  font-size: 21px;
   line-height: 48px;
 }
 
 .converter-field--get .amount-display.is-xxlong {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 48px;
 }
 
@@ -493,12 +494,12 @@ body {
 }
 
 .converter-field--get .amount-editor__input.is-xlong {
-  font-size: 20px;
+  font-size: 21px;
   line-height: 48px;
 }
 
 .converter-field--get .amount-editor__input.is-xxlong {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 48px;
 }
 
@@ -553,13 +554,13 @@ body {
 
 .amount-editor__decimal-placeholder.is-xlong,
 .amount-editor__measure.is-xlong {
-  font-size: 20px;
+  font-size: 21px;
   line-height: 48px;
 }
 
 .amount-editor__decimal-placeholder.is-xxlong,
 .amount-editor__measure.is-xxlong {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 48px;
 }
 
@@ -1456,11 +1457,12 @@ body {
 .currency-modal__currency-hitbox--idr {
   left: 20px;
   right: 20px;
-  top: 576px;
+  top: 448px;
   height: 72px;
   display: flex;
   align-items: center;
   text-align: left;
+  z-index: 2;
 }
 
 .currency-modal__row {
@@ -1468,7 +1470,11 @@ body {
   align-items: center;
   gap: 16px;
   width: 100%;
+  min-height: 72px;
   padding: 0 22px;
+  background: #ffffff;
+  position: relative;
+  z-index: 1;
 }
 
 .currency-modal__row-icon {
@@ -1484,6 +1490,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3px;
+  min-width: 0;
 }
 
 .currency-modal__row-title {
