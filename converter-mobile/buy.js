@@ -271,7 +271,7 @@ function updateFiatDecimalPlaceholder() {
   const editorWidth = fiatInput.getBoundingClientRect().width;
   const placeholderWidth = fiatDecimalPlaceholder.getBoundingClientRect().width || placeholder.length * 22;
   const maxLeft = Math.max(0, editorWidth - placeholderWidth - 2);
-  const offset = Math.max(0, Math.min(measureWidth + 12, maxLeft));
+  const offset = Math.max(0, Math.min(measureWidth + 18, maxLeft));
   fiatDecimalPlaceholder.style.setProperty("--decimal-offset", `${offset}px`);
 }
 
@@ -419,7 +419,7 @@ function syncQuickActions(amount) {
 function getQuickActionConfig() {
   if (selectedFiat.code === "IDR") {
     return [
-      { value: 120000, label: "Rp120,000" },
+      { value: 300000, label: "Rp300,000" },
       { value: 500000, label: "Rp500,000" },
     ];
   }
