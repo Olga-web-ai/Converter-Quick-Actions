@@ -1631,79 +1631,81 @@ body {
   stroke-linejoin: round;
 }
 
-.asset-modal__network-mask {
+.asset-modal__network-options {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 261px;
-  height: 48px;
-  background: #ffffff;
-  border-radius: 18px;
-  z-index: 1;
+  inset: 0;
+  z-index: 3;
 }
 
-.asset-modal__network-hotspots {
+.asset-modal__network-option {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 265px;
-  height: 40px;
-  z-index: 2;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  touch-action: pan-x;
-  user-select: none;
-}
-
-.asset-modal__network-hotspots::-webkit-scrollbar {
-  display: none;
-}
-
-.asset-modal__network-track {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  min-width: max-content;
-  height: 40px;
-  padding: 4px 12px;
-}
-
-.asset-modal__network-chip {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 32px;
-  padding: 8px 16px 9px 12px;
-  border-radius: 16px;
-  border: 1px solid #ebebeb;
-  background: #f5f5f5;
-  color: #1a1a1a;
-  font: 500 12px/15px "Suisse Intl", "Inter", sans-serif;
-  letter-spacing: -0.01em;
+  border: 0;
+  background: transparent;
+  padding: 0;
   cursor: pointer;
-  white-space: nowrap;
 }
 
-.asset-modal__network-chip.is-active {
-  background: #121216;
-  color: #ffffff;
-  border-color: #7354ff;
-  box-shadow: 0 0 0 1px rgba(115, 84, 255, 0.92);
+.asset-modal__network-option--solana {
+  left: 12px;
+  top: 268px;
+  width: 112px;
+  height: 32px;
 }
 
-.asset-modal__network-icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 2px;
-  flex: 0 0 auto;
+.asset-modal__network-option--arbitrum {
+  left: 130px;
+  top: 268px;
+  width: 124px;
+  height: 32px;
 }
 
-.asset-modal__network-label {
-  display: inline-block;
+.asset-modal__network-option--polygon {
+  left: 260px;
+  top: 268px;
+  width: 112px;
+  height: 32px;
+}
+
+.asset-modal__network-option--bsc {
+  left: 12px;
+  top: 308px;
+  width: 132px;
+  height: 32px;
+}
+
+.asset-modal__network-option--ethereum {
+  left: 150px;
+  top: 308px;
+  width: 126px;
+  height: 32px;
+}
+
+.asset-modal__network-option--base {
+  left: 282px;
+  top: 308px;
+  width: 90px;
+  height: 32px;
+}
+
+.asset-modal__network-option--optimism {
+  left: 12px;
+  top: 348px;
+  width: 126px;
+  height: 32px;
+}
+
+.asset-modal__network-option--near {
+  left: 144px;
+  top: 348px;
+  width: 88px;
+  height: 32px;
+}
+
+.asset-modal__network-option--stellar {
+  left: 238px;
+  top: 348px;
+  width: 96px;
+  height: 32px;
 }
 
 .browser-nav {

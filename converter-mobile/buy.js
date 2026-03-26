@@ -318,14 +318,14 @@ function closeAssetModal() {
   assetModal.setAttribute("aria-hidden", "true");
   assetNetworkMenuOpen = false;
   assetNetworkClear.hidden = true;
-  assetNetworkMask.hidden = true;
   assetNetworkRow.hidden = true;
-  assetNetworkRow.scrollLeft = 0;
 }
 
 function updateAssetModalImage() {
   const nextImage =
-    !assetNetworkMenuOpen && selectedAssetNetwork
+    assetNetworkMenuOpen
+      ? `./assets/screens/select-asset-all-networks.png?v=${ASSET_MODAL_VERSION}`
+      : !assetNetworkMenuOpen && selectedAssetNetwork
       ? `./assets/screens/select-asset-network-solana.png?v=${ASSET_MODAL_VERSION}`
       : `./assets/screens/select-asset-exact.png?v=${ASSET_MODAL_VERSION}`;
 
@@ -347,60 +347,23 @@ function openAssetModal() {
 }
 
 function updateAssetFilterUi() {
-  assetNetworkMask.hidden = !assetNetworkMenuOpen;
   assetNetworkRow.hidden = !assetNetworkMenuOpen;
-  const selectedButton = assetNetworkButtons.find(
-    (button) => button.dataset.network === selectedAssetNetwork,
-  );
   const useStaticSelectedNetwork = !assetNetworkMenuOpen && Boolean(selectedAssetNetwork);
 
   assetNetworkClear.hidden = !useStaticSelectedNetwork;
   assetNetworkTrigger.hidden = useStaticSelectedNetwork;
 
-  if (selectedButton) {
-    const selectedIcon = selectedButton.querySelector(".asset-modal__network-icon");
-    const selectedLabel = selectedButton.querySelector(".asset-modal__network-label");
-    assetNetworkTriggerLabel.textContent = selectedLabel ? selectedLabel.textContent : "Network";
+  if (selectedAssetNetwork) {
+    assetNetworkTriggerLabel.textContent = "Solana";
     assetNetworkTriggerIcon.hidden = false;
-    assetNetworkTriggerIcon.setAttribute("src", selectedIcon ? selectedIcon.getAttribute("src") : "");
+    assetNetworkTriggerIcon.setAttribute("src", "./assets/icons/networks/solana.png");
   } else {
     assetNetworkTriggerLabel.textContent = "Network";
     assetNetworkTriggerIcon.hidden = true;
     assetNetworkTriggerIcon.setAttribute("src", "");
   }
 
-  assetNetworkButtons.forEach((button) => {
-    const isActive = button.dataset.network === selectedAssetNetwork;
-    button.setAttribute(
-      "aria-pressed",
-      String(isActive),
-    );
-    button.classList.toggle("is-active", isActive);
-  });
   updateAssetModalImage();
-}
-
-function startAssetNetworkDrag(clientX) {
-  assetNetworkDragging = true;
-  assetNetworkMoved = false;
-  assetNetworkStartX = clientX;
-  assetNetworkStartScrollLeft = assetNetworkRow.scrollLeft;
-}
-
-function moveAssetNetworkDrag(clientX) {
-  if (!assetNetworkDragging) return;
-  const delta = clientX - assetNetworkStartX;
-  if (Math.abs(delta) > 5) {
-    assetNetworkMoved = true;
-  }
-  assetNetworkRow.scrollLeft = assetNetworkStartScrollLeft - delta;
-}
-
-function endAssetNetworkDrag() {
-  assetNetworkDragging = false;
-  requestAnimationFrame(() => {
-    assetNetworkMoved = false;
-  });
 }
 
 function setFieldHover(field, hovering) {
@@ -779,13 +742,6 @@ assetNetworkClear.addEventListener("click", () => {
   assetNetworkMenuOpen = false;
   updateAssetFilterUi();
 });
-
-assetNetworkRow.addEventListener("wheel", (event) => {
-  if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-    assetNetworkRow.scrollLeft += event.deltaY;
-    event.preventDefault();
-  }
-}, { passive: false });
 
 inputKeyboard.addEventListener("mousedown", (event) => {
   event.preventDefault();
