@@ -382,7 +382,8 @@ function syncAmountLengthClass(node, visibleValue) {
   const length = String(visibleValue).length;
   node.classList.toggle("is-medium", length >= 8 && length <= 10);
   node.classList.toggle("is-long", length >= 11 && length <= 13);
-  node.classList.toggle("is-xlong", length >= 14);
+  node.classList.toggle("is-xlong", length >= 14 && length <= 16);
+  node.classList.toggle("is-xxlong", length >= 17);
 }
 
 function resetValidation() {
@@ -497,6 +498,8 @@ function renderFromFiat(rawValue) {
   cryptoRaw = formatCrypto(cryptoAmount, 4);
   fiatInput.value = formatFiatDisplay(fiatRaw);
   cryptoInput.value = cryptoRaw;
+  fiatInput.scrollLeft = 0;
+  cryptoInput.scrollLeft = 0;
   syncAmountLengthClass(fiatDecimalPlaceholder, fiatInput.value);
   syncAmountLengthClass(fiatMeasure, fiatInput.value);
   updateFiatDecimalPlaceholder();
@@ -529,6 +532,8 @@ function renderFromCrypto(rawValue) {
     cryptoInput.value = "";
     fiatRaw = "0";
     fiatInput.value = formatFiatDisplay(fiatRaw);
+    cryptoInput.scrollLeft = 0;
+    fiatInput.scrollLeft = 0;
     syncAmountLengthClass(fiatDecimalPlaceholder, fiatInput.value);
     syncAmountLengthClass(fiatMeasure, fiatInput.value);
     updateFiatDecimalPlaceholder();
@@ -558,6 +563,8 @@ function renderFromCrypto(rawValue) {
   fiatRaw = fiatValue ? normalizeFiatInput(fiatValue.toFixed(2)) : "0";
   cryptoInput.value = cryptoRaw;
   fiatInput.value = formatFiatDisplay(fiatRaw);
+  cryptoInput.scrollLeft = 0;
+  fiatInput.scrollLeft = 0;
   syncAmountLengthClass(fiatDecimalPlaceholder, fiatInput.value);
   syncAmountLengthClass(fiatMeasure, fiatInput.value);
   updateFiatDecimalPlaceholder();
