@@ -1513,7 +1513,7 @@ body {
   z-index: 1;
   pointer-events: none;
   opacity: 0;
-  clip-path: inset(264px 0 0 0);
+  clip-path: inset(276px 0 0 0);
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-image {
@@ -1651,6 +1651,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
+  pointer-events: none;
 }
 
 .asset-modal__network-option {
@@ -1660,6 +1661,19 @@ body {
   padding: 0;
   cursor: pointer;
   border-radius: 18px;
+  pointer-events: auto;
+  transition:
+    background-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.asset-modal__network-option:hover {
+  background: rgba(241, 242, 244, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(224, 226, 230, 0.92);
+}
+
+.asset-modal__network-option:active {
+  background: rgba(233, 235, 239, 0.84);
 }
 
 .asset-modal__network-option--solana {
