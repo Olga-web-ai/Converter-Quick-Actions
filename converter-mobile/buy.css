@@ -1518,7 +1518,7 @@ body {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  z-index: 3;
+  z-index: 9;
 }
 
 .asset-modal__hitbox {
