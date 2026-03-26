@@ -1504,6 +1504,22 @@ body {
   height: auto;
 }
 
+.asset-modal__network-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  clip-path: inset(264px 0 0 0);
+}
+
+.asset-modal[data-overlay="network-open"] .asset-modal__network-image {
+  opacity: 1;
+}
+
 .asset-modal__close-hitbox {
   position: absolute;
   border: 0;
