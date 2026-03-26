@@ -115,6 +115,12 @@ let selectedFiat = FIAT_OPTIONS[0];
 let assetCategory = "all";
 let assetNetworkMenuOpen = false;
 let selectedAssetNetwork = "";
+let assetNetworkDragging = false;
+let assetNetworkMoved = false;
+let assetNetworkStartX = 0;
+let assetNetworkStartScrollLeft = 0;
+const amountMeasureCanvas = document.createElement("canvas");
+const amountMeasureContext = amountMeasureCanvas.getContext("2d");
 
 phoneFrame.dataset.deviceMode = isNativeMobileMode ? "mobile" : "desktop";
 appShell.dataset.deviceMode = isNativeMobileMode ? "mobile" : "desktop";
@@ -211,7 +217,49 @@ function serializeFiatValue(value) {
   return normalizeFiatInput(fixed);
 }
 
+function measureAmountText(text, fontSize) {
+  if (!amountMeasureContext) {
+    return 0;
+  }
+
+  amountMeasureContext.font = `500 ${fontSize}px "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif`;
+  return amountMeasureContext.measureText(text || "0").width;
+}
+
+function fitAmountFontSize(text, availableWidth) {
+  const safeText = text || "0";
+  const maxSize = 44;
+  const minSize = 16;
+
+  for (let size = maxSize; size >= minSize; size -= 1) {
+    if (measureAmountText(safeText, size) <= Math.max(0, availableWidth - 2)) {
+      return size;
+    }
+  }
+
+  return minSize;
+}
+
+function syncAmountTypography() {
+  const fiatText = fiatInput.value || "0";
+  const cryptoText = cryptoInput.value || "0";
+  const fiatWidth = fiatInput.parentElement.getBoundingClientRect().width;
+  const cryptoWidth = cryptoInput.parentElement.getBoundingClientRect().width;
+  const fiatSize = fitAmountFontSize(fiatText, fiatWidth);
+  const cryptoSize = fitAmountFontSize(cryptoText, cryptoWidth);
+
+  fiatInput.style.fontSize = `${fiatSize}px`;
+  fiatInput.style.lineHeight = "48px";
+  cryptoInput.style.fontSize = `${cryptoSize}px`;
+  cryptoInput.style.lineHeight = "48px";
+  fiatDecimalPlaceholder.style.fontSize = `${fiatSize}px`;
+  fiatDecimalPlaceholder.style.lineHeight = "48px";
+  fiatMeasure.style.fontSize = `${fiatSize}px`;
+  fiatMeasure.style.lineHeight = "48px";
+}
+
 function updateFiatDecimalPlaceholder() {
+  syncAmountTypography();
   const hasDot = fiatRaw.includes(".");
   const decimalPart = hasDot ? fiatRaw.split(".")[1] ?? "" : "";
   const placeholder = hasDot ? "0".repeat(Math.max(0, 2 - decimalPart.length)) : "";
@@ -223,7 +271,7 @@ function updateFiatDecimalPlaceholder() {
   const editorWidth = fiatInput.getBoundingClientRect().width;
   const placeholderWidth = fiatDecimalPlaceholder.getBoundingClientRect().width || placeholder.length * 22;
   const maxLeft = Math.max(0, editorWidth - placeholderWidth - 2);
-  const offset = Math.max(0, Math.min(measureWidth + 8, maxLeft));
+  const offset = Math.max(0, Math.min(measureWidth + 12, maxLeft));
   fiatDecimalPlaceholder.style.setProperty("--decimal-offset", `${offset}px`);
 }
 

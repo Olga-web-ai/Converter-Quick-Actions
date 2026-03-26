@@ -400,9 +400,6 @@ body {
   overflow: hidden;
   vertical-align: top;
   white-space: nowrap;
-  --amount-scale: 1;
-  transform: scale(var(--amount-scale));
-  transform-origin: left bottom;
 }
 
 .converter-field--pay .amount-editor__input,
@@ -428,70 +425,82 @@ body {
 
 .amount-editor__input.is-medium,
 .amount-display.is-medium {
-  --amount-scale: 0.9;
+  font-size: 32px;
 }
 
 .amount-editor__input.is-long,
 .amount-display.is-long {
-  --amount-scale: 0.8;
+  font-size: 26px;
 }
 
 .amount-editor__input.is-xlong,
 .amount-display.is-xlong {
-  --amount-scale: 0.68;
+  font-size: 21px;
 }
 
 .amount-editor__input.is-xxlong,
 .amount-display.is-xxlong {
-  --amount-scale: 0.57;
+  font-size: 17px;
 }
 
 .converter-field--pay .amount-editor__input.is-medium {
-  --amount-scale: 0.9;
+  font-size: 32px;
+  line-height: 48px;
 }
 
 .converter-field--pay .amount-editor__input.is-long {
-  --amount-scale: 0.8;
+  font-size: 26px;
+  line-height: 48px;
 }
 
 .converter-field--pay .amount-editor__input.is-xlong {
-  --amount-scale: 0.68;
+  font-size: 21px;
+  line-height: 48px;
 }
 
 .converter-field--pay .amount-editor__input.is-xxlong {
-  --amount-scale: 0.57;
+  font-size: 17px;
+  line-height: 48px;
 }
 
 .converter-field--get .amount-display.is-medium {
-  --amount-scale: 0.9;
+  font-size: 32px;
+  line-height: 48px;
 }
 
 .converter-field--get .amount-display.is-long {
-  --amount-scale: 0.8;
+  font-size: 26px;
+  line-height: 48px;
 }
 
 .converter-field--get .amount-display.is-xlong {
-  --amount-scale: 0.68;
+  font-size: 21px;
+  line-height: 48px;
 }
 
 .converter-field--get .amount-display.is-xxlong {
-  --amount-scale: 0.57;
+  font-size: 17px;
+  line-height: 48px;
 }
 
 .converter-field--get .amount-editor__input.is-medium {
-  --amount-scale: 0.9;
+  font-size: 32px;
+  line-height: 48px;
 }
 
 .converter-field--get .amount-editor__input.is-long {
-  --amount-scale: 0.8;
+  font-size: 26px;
+  line-height: 48px;
 }
 
 .converter-field--get .amount-editor__input.is-xlong {
-  --amount-scale: 0.68;
+  font-size: 21px;
+  line-height: 48px;
 }
 
 .converter-field--get .amount-editor__input.is-xxlong {
-  --amount-scale: 0.57;
+  font-size: 17px;
+  line-height: 48px;
 }
 
 .amount-editor__input:focus {
@@ -515,9 +524,7 @@ body {
   pointer-events: none;
   white-space: nowrap;
   overflow: visible;
-  --amount-scale: 1;
-  transform: translateX(var(--decimal-offset, 0px)) scale(var(--amount-scale));
-  transform-origin: left bottom;
+  transform: translateX(var(--decimal-offset, 0px));
 }
 
 .amount-editor__measure {
@@ -531,29 +538,30 @@ body {
   font-size: 44px;
   line-height: 48px;
   font-weight: 500;
-  --amount-scale: 1;
-  transform: scale(var(--amount-scale));
-  transform-origin: left bottom;
 }
 
 .amount-editor__decimal-placeholder.is-medium,
 .amount-editor__measure.is-medium {
-  --amount-scale: 0.9;
+  font-size: 32px;
+  line-height: 48px;
 }
 
 .amount-editor__decimal-placeholder.is-long,
 .amount-editor__measure.is-long {
-  --amount-scale: 0.8;
+  font-size: 26px;
+  line-height: 48px;
 }
 
 .amount-editor__decimal-placeholder.is-xlong,
 .amount-editor__measure.is-xlong {
-  --amount-scale: 0.68;
+  font-size: 21px;
+  line-height: 48px;
 }
 
 .amount-editor__decimal-placeholder.is-xxlong,
 .amount-editor__measure.is-xxlong {
-  --amount-scale: 0.57;
+  font-size: 17px;
+  line-height: 48px;
 }
 
 .asset-selector {
