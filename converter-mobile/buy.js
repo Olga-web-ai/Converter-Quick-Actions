@@ -104,7 +104,7 @@ const FIAT_OPTIONS = [
   { code: "USD", name: "US Dollar", symbol: "$", locale: "en-US", style: "usd" },
   { code: "GBP", name: "British Pound", symbol: "£", locale: "en-GB", style: "gbp" },
   { code: "PLN", name: "Polish Zloty", symbol: "zł", locale: "pl-PL", style: "pln" },
-  { code: "IDR", name: "Indonesian Rupiah", symbol: "Rp", locale: "id-ID", style: "idr", selectorLabel: "RP" },
+  { code: "IDR", name: "Indonesian Rupiah", symbol: "Rp", locale: "id-ID", style: "idr", selectorLabel: "Rp" },
 ];
 
 let activeField = "pay";
@@ -118,21 +118,6 @@ let selectedAssetNetwork = "";
 
 phoneFrame.dataset.deviceMode = isNativeMobileMode ? "mobile" : "desktop";
 appShell.dataset.deviceMode = isNativeMobileMode ? "mobile" : "desktop";
-
-const urlParams = new URLSearchParams(window.location.search);
-const initialFiatCode = urlParams.get("fiat");
-const initialAmount = urlParams.get("amount");
-
-if (initialFiatCode) {
-  const matchedFiat = FIAT_OPTIONS.find((option) => option.code === initialFiatCode.toUpperCase());
-  if (matchedFiat) {
-    selectedFiat = matchedFiat;
-  }
-}
-
-if (initialAmount) {
-  fiatRaw = initialAmount;
-}
 
 function normalizeFiatInput(value) {
   const normalized = value.replace(/[^\d.,]/g, "").replace(/,/g, "");

@@ -372,6 +372,8 @@ body {
   flex: 1;
   min-width: 0;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .amount-editor--fiat {
@@ -432,12 +434,12 @@ body {
 
 .amount-editor__input.is-xlong,
 .amount-display.is-xlong {
-  font-size: clamp(18px, 4.2vw, 24px);
+  font-size: clamp(20px, 4.4vw, 25px);
 }
 
 .amount-editor__input.is-xxlong,
 .amount-display.is-xxlong {
-  font-size: clamp(15px, 3.8vw, 19px);
+  font-size: clamp(16px, 4vw, 21px);
 }
 
 .converter-field--pay .amount-editor__input.is-medium {
@@ -451,12 +453,12 @@ body {
 }
 
 .converter-field--pay .amount-editor__input.is-xlong {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 48px;
 }
 
 .converter-field--pay .amount-editor__input.is-xxlong {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 48px;
 }
 
@@ -471,12 +473,12 @@ body {
 }
 
 .converter-field--get .amount-display.is-xlong {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 48px;
 }
 
 .converter-field--get .amount-display.is-xxlong {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 48px;
 }
 
@@ -491,12 +493,12 @@ body {
 }
 
 .converter-field--get .amount-editor__input.is-xlong {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 48px;
 }
 
 .converter-field--get .amount-editor__input.is-xxlong {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 48px;
 }
 
@@ -551,13 +553,13 @@ body {
 
 .amount-editor__decimal-placeholder.is-xlong,
 .amount-editor__measure.is-xlong {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 48px;
 }
 
 .amount-editor__decimal-placeholder.is-xxlong,
 .amount-editor__measure.is-xxlong {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 48px;
 }
 
