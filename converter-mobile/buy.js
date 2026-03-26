@@ -351,17 +351,10 @@ function updateAssetFilterUi() {
   const useStaticSelectedNetwork = !assetNetworkMenuOpen && Boolean(selectedAssetNetwork);
 
   assetNetworkClear.hidden = !useStaticSelectedNetwork;
-  assetNetworkTrigger.hidden = useStaticSelectedNetwork;
-
-  if (selectedAssetNetwork) {
-    assetNetworkTriggerLabel.textContent = "Solana";
-    assetNetworkTriggerIcon.hidden = false;
-    assetNetworkTriggerIcon.setAttribute("src", "./assets/icons/networks/solana.png");
-  } else {
-    assetNetworkTriggerLabel.textContent = "Network";
-    assetNetworkTriggerIcon.hidden = true;
-    assetNetworkTriggerIcon.setAttribute("src", "");
-  }
+  assetNetworkTrigger.hidden = true;
+  assetNetworkTriggerLabel.textContent = "Network";
+  assetNetworkTriggerIcon.hidden = true;
+  assetNetworkTriggerIcon.setAttribute("src", "");
 
   updateAssetModalImage();
 }

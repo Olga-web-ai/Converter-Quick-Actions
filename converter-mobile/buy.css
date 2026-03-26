@@ -1643,6 +1643,23 @@ body {
   background: transparent;
   padding: 0;
   cursor: pointer;
+  border-radius: 18px;
+  transition:
+    background-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
+}
+
+.asset-modal__network-option:hover {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(156, 140, 255, 0.28),
+    0 1px 2px rgba(41, 45, 56, 0.08);
+}
+
+.asset-modal__network-option:active {
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(0.5px);
 }
 
 .asset-modal__network-option--solana {
