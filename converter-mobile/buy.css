@@ -656,6 +656,11 @@ body {
   place-items: center;
 }
 
+.asset-selector__coin--fiat-idr {
+  background: linear-gradient(180deg, #ef0016 0 50%, #ffffff 50% 100%);
+  border: 1px solid #f1f1f1;
+}
+
 .asset-selector__fiat-glyph {
   font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 19px;
@@ -842,6 +847,14 @@ body {
   padding: 16px 0;
 }
 
+.converter-field--pay .quick-actions[data-count="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.converter-field--pay .quick-actions[data-count="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .quick-action {
   min-height: 42px;
   border-radius: 999px;
@@ -865,6 +878,10 @@ body {
   line-height: 17px;
   font-weight: 600;
   padding: 0;
+}
+
+.quick-action[hidden] {
+  display: none !important;
 }
 
 .quick-action:hover,

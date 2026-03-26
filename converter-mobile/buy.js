@@ -93,6 +93,7 @@ const MIN_FIAT = 15;
 const MIN_CRYPTO = 0.0078;
 const REWARD_RATE = 0.0115;
 const LARGE_ORDER_THRESHOLD = 50000;
+const PRO_THRESHOLD_LABEL = "€50,000";
 const DEFAULT_ASSET = {
   symbol: "ETH",
   price: 1875.62,
@@ -102,6 +103,7 @@ const FIAT_OPTIONS = [
   { code: "USD", name: "US Dollar", symbol: "$", locale: "en-US", style: "usd" },
   { code: "GBP", name: "British Pound", symbol: "£", locale: "en-GB", style: "gbp" },
   { code: "PLN", name: "Polish Zloty", symbol: "zł", locale: "pl-PL", style: "pln" },
+  { code: "IDR", name: "Indonesian Rupiah", symbol: "Rp", locale: "id-ID", style: "idr", selectorLabel: "RP" },
 ];
 
 let activeField = "pay";
@@ -116,6 +118,21 @@ let selectedAssetNetwork = "";
 phoneFrame.dataset.deviceMode = isNativeMobileMode ? "mobile" : "desktop";
 appShell.dataset.deviceMode = isNativeMobileMode ? "mobile" : "desktop";
 
+const urlParams = new URLSearchParams(window.location.search);
+const initialFiatCode = urlParams.get("fiat");
+const initialAmount = urlParams.get("amount");
+
+if (initialFiatCode) {
+  const matchedFiat = FIAT_OPTIONS.find((option) => option.code === initialFiatCode.toUpperCase());
+  if (matchedFiat) {
+    selectedFiat = matchedFiat;
+  }
+}
+
+if (initialAmount) {
+  fiatRaw = initialAmount;
+}
+
 function normalizeFiatInput(value) {
   const normalized = value.replace(/[^\d.,]/g, "").replace(/,/g, "");
   if (normalized === "") {
@@ -123,7 +140,7 @@ function normalizeFiatInput(value) {
   }
   const hasDot = normalized.includes(".");
   const [wholePart = "", decimalPart = ""] = normalized.split(".");
-  const wholeClean = wholePart.replace(/^0+(?=\d)/, "").slice(0, 9);
+  const wholeClean = wholePart.replace(/^0+(?=\d)/, "").slice(0, 13);
   const trimmedWhole = wholeClean || (hasDot ? "0" : "");
   const trimmedDecimal = decimalPart.slice(0, 2);
 
@@ -344,6 +361,22 @@ function syncQuickActions(amount) {
   });
 }
 
+function getQuickActionConfig() {
+  if (selectedFiat.code === "IDR") {
+    return [
+      { value: 120000, label: "Rp120,000" },
+      { value: 500000, label: "Rp500,000" },
+    ];
+  }
+
+  return [
+    { value: 50, label: `${selectedFiat.symbol}50` },
+    { value: 100, label: `${selectedFiat.symbol}100` },
+    { value: 150, label: `${selectedFiat.symbol}150` },
+    { value: 200, label: `${selectedFiat.symbol}200` },
+  ];
+}
+
 function syncAmountLengthClass(node, visibleValue) {
   const length = String(visibleValue).length;
   node.classList.toggle("is-medium", length >= 8 && length <= 10);
@@ -359,7 +392,7 @@ function resetValidation() {
 }
 
 function updateFiatSelector() {
-  fiatSelectorLabel.textContent = selectedFiat.code;
+  fiatSelectorLabel.textContent = selectedFiat.selectorLabel || selectedFiat.code;
   const coinClass =
     selectedFiat.style === "eu"
       ? "asset-selector__coin asset-selector__coin--eu"
@@ -373,14 +406,34 @@ function updateFiatSelector() {
         <i></i><i></i><i></i><i></i><i></i><i></i>
       </span>
     `;
+  } else if (selectedFiat.style === "idr") {
+    fiatSelectorCoin.innerHTML = "";
   } else {
     fiatSelectorCoin.innerHTML = `<span class="asset-selector__fiat-glyph" aria-hidden="true">${selectedFiat.symbol}</span>`;
   }
 }
 
 function updateQuickActionLabels() {
-  quickActions.forEach((button) => {
-    button.textContent = `${selectedFiat.symbol}${button.dataset.amount}`;
+  const config = getQuickActionConfig();
+  const visibleCount = config.length;
+  const quickActionsContainer = quickActions[0]?.parentElement;
+
+  if (quickActionsContainer) {
+    quickActionsContainer.dataset.count = String(visibleCount);
+  }
+
+  quickActions.forEach((button, index) => {
+    const item = config[index];
+    if (!item) {
+      button.hidden = true;
+      button.dataset.amount = "";
+      button.textContent = "";
+      return;
+    }
+
+    button.hidden = false;
+    button.dataset.amount = String(item.value);
+    button.textContent = item.label;
   });
 }
 
@@ -437,7 +490,7 @@ function renderFromFiat(rawValue) {
 
   resetValidation();
   if (fiatValue >= LARGE_ORDER_THRESHOLD) {
-    payLabel.textContent = `You pay · Use PRO above ${formatFiat(LARGE_ORDER_THRESHOLD)}`;
+    payLabel.textContent = `You pay · Use PRO above ${PRO_THRESHOLD_LABEL}`;
   } else if (hasError) {
     payField.dataset.validation = "error";
     payLabel.textContent = `You pay · Minimum ${formatFiat(MIN_FIAT)}`;
@@ -498,7 +551,7 @@ function renderFromCrypto(rawValue) {
 
   resetValidation();
   if (fiatValue >= LARGE_ORDER_THRESHOLD) {
-    getLabel.textContent = `You get · Use PRO above ${formatFiat(LARGE_ORDER_THRESHOLD)}`;
+    getLabel.textContent = `You get · Use PRO above ${PRO_THRESHOLD_LABEL}`;
   }
   if (hasError) {
     getField.dataset.validation = "error";
