@@ -100,11 +100,11 @@ const DEFAULT_ASSET = {
   price: 1875.62,
 };
 const FIAT_OPTIONS = [
-  { code: "EUR", name: "Euro", symbol: "€", locale: "en-IE", style: "eu" },
-  { code: "USD", name: "US Dollar", symbol: "$", locale: "en-US", style: "usd" },
-  { code: "GBP", name: "British Pound", symbol: "£", locale: "en-GB", style: "gbp" },
-  { code: "PLN", name: "Polish Zloty", symbol: "zł", locale: "pl-PL", style: "pln" },
-  { code: "IDR", name: "Indonesian Rupiah", symbol: "Rp", locale: "id-ID", style: "idr", selectorLabel: "Rp" },
+  { code: "EUR", name: "Euro", symbol: "€", locale: "en-IE", style: "eu", eurRate: 1 },
+  { code: "USD", name: "US Dollar", symbol: "$", locale: "en-US", style: "usd", eurRate: 1.08 },
+  { code: "GBP", name: "British Pound", symbol: "£", locale: "en-GB", style: "gbp", eurRate: 0.84 },
+  { code: "PLN", name: "Polish Zloty", symbol: "zł", locale: "pl-PL", style: "pln", eurRate: 4.29 },
+  { code: "IDR", name: "Indonesian Rupiah", symbol: "Rp", locale: "id-ID", style: "idr", selectorLabel: "Rp", eurRate: 17650 },
 ];
 
 let activeField = "pay";
@@ -188,6 +188,27 @@ function formatFiatDisplay(rawValue) {
   }
 
   return formattedWhole;
+}
+
+function toEurAmount(value, fiat = selectedFiat) {
+  return value / (fiat.eurRate || 1);
+}
+
+function fromEurAmount(value, fiat = selectedFiat) {
+  return value * (fiat.eurRate || 1);
+}
+
+function serializeFiatValue(value) {
+  if (!Number.isFinite(value) || value === 0) {
+    return "0";
+  }
+
+  const fixed = value
+    .toFixed(2)
+    .replace(/\.00$/, "")
+    .replace(/(\.\d)0$/, "$1");
+
+  return normalizeFiatInput(fixed);
 }
 
 function updateFiatDecimalPlaceholder() {
@@ -430,15 +451,22 @@ function selectFiatCurrency(code) {
     return;
   }
 
+  const previousFiat = selectedFiat;
+  const currentFiatValue = parseRawNumber(fiatRaw || "0");
+  const eurValue =
+    activeField === "get"
+      ? parseRawNumber(cryptoRaw || "0") * DEFAULT_ASSET.price
+      : toEurAmount(currentFiatValue, previousFiat);
+
   selectedFiat = matchedFiat;
   updateFiatSelector();
   updateQuickActionLabels();
-  renderFromFiat(fiatRaw || "100");
+  renderFromFiat(serializeFiatValue(fromEurAmount(eurValue, selectedFiat)));
   closeCurrencyModal();
 }
 
-function updateSummary(fiatValue, cryptoAmount, rewardAmount) {
-  const isLargeOrder = fiatValue >= LARGE_ORDER_THRESHOLD;
+function updateSummary(fiatValue, cryptoAmount, rewardAmount, eurValue) {
+  const isLargeOrder = eurValue >= LARGE_ORDER_THRESHOLD;
   const rewardsVisible = boostPointsEnabled && !isLargeOrder;
 
   fiatEquivalent.textContent = formatFiat(fiatValue || 0);
@@ -472,13 +500,14 @@ function renderFromFiat(rawValue) {
   fiatRaw = normalizeFiatInput(rawValue);
 
   const fiatValue = parseRawNumber(fiatRaw);
-  const cryptoAmount = fiatValue / DEFAULT_ASSET.price;
-  const rewardAmount = fiatValue * REWARD_RATE;
+  const eurValue = toEurAmount(fiatValue);
+  const cryptoAmount = eurValue / DEFAULT_ASSET.price;
+  const rewardAmount = eurValue * REWARD_RATE;
   const hasError =
     fiatRaw === "0" ||
     fiatRaw === "0." ||
     fiatRaw === "" ||
-    fiatValue < MIN_FIAT;
+    eurValue < MIN_FIAT;
 
   cryptoRaw = formatCrypto(cryptoAmount, 4);
   fiatInput.value = formatFiatDisplay(fiatRaw);
@@ -488,14 +517,14 @@ function renderFromFiat(rawValue) {
   syncAmountLengthClass(fiatDecimalPlaceholder, fiatInput.value);
   syncAmountLengthClass(fiatMeasure, fiatInput.value);
   updateFiatDecimalPlaceholder();
-  updateSummary(fiatValue, cryptoAmount, rewardAmount);
+  updateSummary(fiatValue, cryptoAmount, rewardAmount, eurValue);
 
   resetValidation();
-  if (fiatValue >= LARGE_ORDER_THRESHOLD) {
+  if (eurValue >= LARGE_ORDER_THRESHOLD) {
     payLabel.textContent = `You pay · Use PRO above ${PRO_THRESHOLD_LABEL}`;
   } else if (hasError) {
     payField.dataset.validation = "error";
-    payLabel.textContent = `You pay · Minimum ${formatFiat(MIN_FIAT)}`;
+    payLabel.textContent = `You pay · Minimum ${formatFiat(fromEurAmount(MIN_FIAT))}`;
   }
 
   syncAmountLengthClass(fiatInput, fiatInput.value);
@@ -522,7 +551,7 @@ function renderFromCrypto(rawValue) {
     syncAmountLengthClass(fiatDecimalPlaceholder, fiatInput.value);
     syncAmountLengthClass(fiatMeasure, fiatInput.value);
     updateFiatDecimalPlaceholder();
-    updateSummary(fiatValue, cryptoAmount, rewardAmount);
+    updateSummary(fiatValue, cryptoAmount, rewardAmount, 0);
 
     resetValidation();
     getLabel.textContent = `You get · Minimum ${MIN_CRYPTO} ${DEFAULT_ASSET.symbol}`;
@@ -537,15 +566,16 @@ function renderFromCrypto(rawValue) {
   }
 
   const cryptoAmount = parseRawNumber(cryptoRaw);
-  const fiatValue = cryptoAmount * DEFAULT_ASSET.price;
-  const rewardAmount = fiatValue * REWARD_RATE;
+  const eurValue = cryptoAmount * DEFAULT_ASSET.price;
+  const fiatValue = fromEurAmount(eurValue);
+  const rewardAmount = eurValue * REWARD_RATE;
   const hasError =
     cryptoRaw === "0" ||
     cryptoRaw === "0." ||
     cryptoRaw === "" ||
     cryptoAmount < MIN_CRYPTO;
 
-  fiatRaw = fiatValue ? normalizeFiatInput(fiatValue.toFixed(2)) : "0";
+  fiatRaw = serializeFiatValue(fiatValue);
   cryptoInput.value = cryptoRaw;
   fiatInput.value = formatFiatDisplay(fiatRaw);
   cryptoInput.scrollLeft = 0;
@@ -553,10 +583,10 @@ function renderFromCrypto(rawValue) {
   syncAmountLengthClass(fiatDecimalPlaceholder, fiatInput.value);
   syncAmountLengthClass(fiatMeasure, fiatInput.value);
   updateFiatDecimalPlaceholder();
-  updateSummary(fiatValue, cryptoAmount, rewardAmount);
+  updateSummary(fiatValue, cryptoAmount, rewardAmount, eurValue);
 
   resetValidation();
-  if (fiatValue >= LARGE_ORDER_THRESHOLD) {
+  if (eurValue >= LARGE_ORDER_THRESHOLD) {
     getLabel.textContent = `You get · Use PRO above ${PRO_THRESHOLD_LABEL}`;
   }
   if (hasError) {
@@ -641,8 +671,8 @@ boostToggle.addEventListener("click", () => {
   boostPointsEnabled = !boostPointsEnabled;
   const currentFiat = parseRawNumber(fiatRaw);
   const currentCrypto = parseRawNumber(cryptoRaw);
-  const rewardAmount = currentFiat * REWARD_RATE;
-  updateSummary(currentFiat, currentCrypto, rewardAmount);
+  const rewardAmount = toEurAmount(currentFiat) * REWARD_RATE;
+  updateSummary(currentFiat, currentCrypto, rewardAmount, toEurAmount(currentFiat));
 });
 
 fiatSelector.addEventListener("click", () => {

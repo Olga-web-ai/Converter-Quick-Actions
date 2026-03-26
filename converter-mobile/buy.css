@@ -400,6 +400,9 @@ body {
   overflow: hidden;
   vertical-align: top;
   white-space: nowrap;
+  --amount-scale: 1;
+  transform: scale(var(--amount-scale));
+  transform-origin: left bottom;
 }
 
 .converter-field--pay .amount-editor__input,
@@ -425,82 +428,70 @@ body {
 
 .amount-editor__input.is-medium,
 .amount-display.is-medium {
-  font-size: clamp(32px, 6.8vw, 40px);
+  --amount-scale: 0.9;
 }
 
 .amount-editor__input.is-long,
 .amount-display.is-long {
-  font-size: clamp(26px, 5.4vw, 34px);
+  --amount-scale: 0.8;
 }
 
 .amount-editor__input.is-xlong,
 .amount-display.is-xlong {
-  font-size: clamp(21px, 4.6vw, 26px);
+  --amount-scale: 0.68;
 }
 
 .amount-editor__input.is-xxlong,
 .amount-display.is-xxlong {
-  font-size: clamp(17px, 4.2vw, 22px);
+  --amount-scale: 0.57;
 }
 
 .converter-field--pay .amount-editor__input.is-medium {
-  font-size: 32px;
-  line-height: 48px;
+  --amount-scale: 0.9;
 }
 
 .converter-field--pay .amount-editor__input.is-long {
-  font-size: 26px;
-  line-height: 48px;
+  --amount-scale: 0.8;
 }
 
 .converter-field--pay .amount-editor__input.is-xlong {
-  font-size: 21px;
-  line-height: 48px;
+  --amount-scale: 0.68;
 }
 
 .converter-field--pay .amount-editor__input.is-xxlong {
-  font-size: 17px;
-  line-height: 48px;
+  --amount-scale: 0.57;
 }
 
 .converter-field--get .amount-display.is-medium {
-  font-size: 32px;
-  line-height: 48px;
+  --amount-scale: 0.9;
 }
 
 .converter-field--get .amount-display.is-long {
-  font-size: 26px;
-  line-height: 48px;
+  --amount-scale: 0.8;
 }
 
 .converter-field--get .amount-display.is-xlong {
-  font-size: 21px;
-  line-height: 48px;
+  --amount-scale: 0.68;
 }
 
 .converter-field--get .amount-display.is-xxlong {
-  font-size: 17px;
-  line-height: 48px;
+  --amount-scale: 0.57;
 }
 
 .converter-field--get .amount-editor__input.is-medium {
-  font-size: 32px;
-  line-height: 48px;
+  --amount-scale: 0.9;
 }
 
 .converter-field--get .amount-editor__input.is-long {
-  font-size: 26px;
-  line-height: 48px;
+  --amount-scale: 0.8;
 }
 
 .converter-field--get .amount-editor__input.is-xlong {
-  font-size: 21px;
-  line-height: 48px;
+  --amount-scale: 0.68;
 }
 
 .converter-field--get .amount-editor__input.is-xxlong {
-  font-size: 17px;
-  line-height: 48px;
+  --amount-scale: 0.57;
 }
 
 .amount-editor__input:focus {
@@ -515,8 +506,7 @@ body {
 .amount-editor__decimal-placeholder {
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translate(var(--decimal-offset, 0px), -50%);
+  bottom: 0;
   color: #cfd2d8;
   font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 44px;
@@ -525,12 +515,15 @@ body {
   pointer-events: none;
   white-space: nowrap;
   overflow: visible;
+  --amount-scale: 1;
+  transform: translateX(var(--decimal-offset, 0px)) scale(var(--amount-scale));
+  transform-origin: left bottom;
 }
 
 .amount-editor__measure {
   position: absolute;
   left: 0;
-  top: 0;
+  bottom: 0;
   visibility: hidden;
   pointer-events: none;
   white-space: pre;
@@ -538,30 +531,29 @@ body {
   font-size: 44px;
   line-height: 48px;
   font-weight: 500;
+  --amount-scale: 1;
+  transform: scale(var(--amount-scale));
+  transform-origin: left bottom;
 }
 
 .amount-editor__decimal-placeholder.is-medium,
 .amount-editor__measure.is-medium {
-  font-size: 32px;
-  line-height: 48px;
+  --amount-scale: 0.9;
 }
 
 .amount-editor__decimal-placeholder.is-long,
 .amount-editor__measure.is-long {
-  font-size: 26px;
-  line-height: 48px;
+  --amount-scale: 0.8;
 }
 
 .amount-editor__decimal-placeholder.is-xlong,
 .amount-editor__measure.is-xlong {
-  font-size: 21px;
-  line-height: 48px;
+  --amount-scale: 0.68;
 }
 
 .amount-editor__decimal-placeholder.is-xxlong,
 .amount-editor__measure.is-xxlong {
-  font-size: 17px;
-  line-height: 48px;
+  --amount-scale: 0.57;
 }
 
 .asset-selector {
