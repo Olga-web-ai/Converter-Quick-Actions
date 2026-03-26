@@ -270,8 +270,10 @@ function updateFiatDecimalPlaceholder() {
   const measureWidth = fiatMeasure.getBoundingClientRect().width;
   const editorWidth = fiatInput.getBoundingClientRect().width;
   const placeholderWidth = fiatDecimalPlaceholder.getBoundingClientRect().width || placeholder.length * 22;
+  const currentFontSize = Number.parseFloat(window.getComputedStyle(fiatInput).fontSize) || 44;
+  const adaptiveGap = Math.max(3, Math.min(7, currentFontSize * 0.1));
   const maxLeft = Math.max(0, editorWidth - placeholderWidth - 2);
-  const offset = Math.max(0, Math.min(measureWidth + 18, maxLeft));
+  const offset = Math.max(0, Math.min(measureWidth + adaptiveGap, maxLeft));
   fiatDecimalPlaceholder.style.setProperty("--decimal-offset", `${offset}px`);
 }
 
