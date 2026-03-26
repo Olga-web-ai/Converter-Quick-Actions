@@ -788,11 +788,18 @@ getField.addEventListener("click", (event) => {
 });
 
 function runEntranceSequence() {
-  const steps = ["nav", "fields", "content", "summary", "ready"];
-  steps.forEach((stage, index) => {
+  const steps = [
+    { stage: "nav", delay: 0 },
+    { stage: "fields", delay: 140 },
+    { stage: "content", delay: 360 },
+    { stage: "summary", delay: 620 },
+    { stage: "ready", delay: 860 },
+  ];
+
+  steps.forEach(({ stage, delay }) => {
     window.setTimeout(() => {
       appShell.dataset.stage = stage;
-    }, index * 30);
+    }, delay);
   });
 }
 

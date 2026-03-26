@@ -7,10 +7,10 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>Converter Buy Page</title>
-    <link rel="stylesheet" href="./buy.css?v=20260326-2320" />
+    <link rel="stylesheet" href="./buy.css?v=20260326-2343" />
   </head>
   <body>
-    <main class="app-shell" data-stage="ready">
+    <main class="app-shell" data-stage="boot">
       <section class="phone-frame" aria-label="Converter buy page prototype">
         <div class="header-art" data-reveal="nav" aria-hidden="true">
           <img class="header-art__image" src="./assets/ui/header-top@4x.png" alt="" />
@@ -24,6 +24,16 @@
               data-interaction="rest"
               data-validation="normal"
             >
+              <div class="converter-field__loading" aria-hidden="true">
+                <span class="converter-field__loading-label"></span>
+                <div class="converter-field__loading-body">
+                  <span class="converter-field__loading-amount"></span>
+                  <span class="converter-field__loading-selector"></span>
+                </div>
+                <div class="converter-field__loading-actions converter-field__loading-actions--four">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
               <div class="converter-field__header">
                 <p class="converter-field__label" data-role="label">You pay</p>
               </div>
@@ -74,6 +84,16 @@
               data-interaction="rest"
               data-validation="normal"
             >
+              <div class="converter-field__loading" aria-hidden="true">
+                <span class="converter-field__loading-label"></span>
+                <div class="converter-field__loading-body">
+                  <span class="converter-field__loading-amount converter-field__loading-amount--crypto"></span>
+                  <span class="converter-field__loading-selector"></span>
+                </div>
+                <div class="converter-field__loading-actions converter-field__loading-actions--meta">
+                  <span class="converter-field__loading-badge"></span>
+                </div>
+              </div>
               <div class="converter-field__header">
                 <p class="converter-field__label" data-role="label">You get</p>
               </div>
@@ -256,6 +276,6 @@
       </section>
     </main>
 
-    <script src="./buy.js?v=20260326-2320"></script>
+    <script src="./buy.js?v=20260326-2343"></script>
   </body>
 </html>
