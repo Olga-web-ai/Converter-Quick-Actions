@@ -222,8 +222,8 @@ function updateFiatDecimalPlaceholder() {
   const measureWidth = fiatMeasure.getBoundingClientRect().width;
   const editorWidth = fiatInput.getBoundingClientRect().width;
   const placeholderWidth = fiatDecimalPlaceholder.getBoundingClientRect().width || placeholder.length * 22;
-  const maxLeft = Math.max(0, editorWidth - placeholderWidth - 4);
-  const offset = Math.max(0, Math.min(measureWidth + 3, maxLeft));
+  const maxLeft = Math.max(0, editorWidth - placeholderWidth - 2);
+  const offset = Math.max(0, Math.min(measureWidth + 8, maxLeft));
   fiatDecimalPlaceholder.style.setProperty("--decimal-offset", `${offset}px`);
 }
 
