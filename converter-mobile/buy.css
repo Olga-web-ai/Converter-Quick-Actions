@@ -1662,18 +1662,6 @@ body {
   cursor: pointer;
   border-radius: 18px;
   pointer-events: auto;
-  transition:
-    background-color 140ms ease,
-    box-shadow 140ms ease;
-}
-
-.asset-modal__network-option:hover {
-  background: rgba(241, 242, 244, 0.72);
-  box-shadow: inset 0 0 0 1px rgba(224, 226, 230, 0.92);
-}
-
-.asset-modal__network-option:active {
-  background: rgba(233, 235, 239, 0.84);
 }
 
 .asset-modal__network-option--solana {
