@@ -1457,7 +1457,49 @@ body {
   left: 20px;
   right: 20px;
   top: 576px;
-  height: 58px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.currency-modal__row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 0 22px;
+}
+
+.currency-modal__row-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ef0016 0 50%, #ffffff 50% 100%);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.currency-modal__row-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.currency-modal__row-title {
+  color: #1a1a1d;
+  font-family: "ES Rebond Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+.currency-modal__row-subtitle {
+  color: #7c7d83;
+  font-family: "Suisse Intl", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
 }
 
 .currency-modal__image {
