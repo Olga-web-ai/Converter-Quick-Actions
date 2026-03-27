@@ -354,10 +354,52 @@ body {
 }
 
 .payment-strip__logo {
-  display: block;
+  position: relative;
+  display: inline-block;
   width: 28.5px;
   height: 18px;
   flex: 0 0 auto;
+}
+
+.payment-strip__logo-shell {
+  position: absolute;
+  inset: 0;
+  border: 0.75px solid #232323;
+  border-radius: 1.5px;
+  background: #fff;
+}
+
+.payment-strip__logo-part {
+  position: absolute;
+  display: block;
+}
+
+.payment-strip__logo--apple .payment-strip__logo-part--apple-mark {
+  left: 7.82px;
+  top: 5.11px;
+  width: 5.68px;
+  height: 6.98px;
+}
+
+.payment-strip__logo--apple .payment-strip__logo-part--apple-pay {
+  left: 12.76px;
+  top: 4.91px;
+  width: 13.64px;
+  height: 8.18px;
+}
+
+.payment-strip__logo--gpay .payment-strip__logo-part--gpay-g {
+  left: 18.1px;
+  top: 5.14px;
+  width: 7.03px;
+  height: 7.27px;
+}
+
+.payment-strip__logo--gpay .payment-strip__logo-part--gpay-pay {
+  left: 4.1px;
+  top: 5.56px;
+  width: 12.25px;
+  height: 8.24px;
 }
 
 .payment-strip__bank {
