@@ -513,7 +513,7 @@ function renderFromFiat(rawValue) {
     fiatRaw === "" ||
     eurValue < MIN_FIAT;
 
-  cryptoRaw = formatCrypto(cryptoAmount, 4);
+  cryptoRaw = formatCrypto(cryptoAmount, 6);
   fiatInput.value = formatFiatDisplay(fiatRaw);
   cryptoInput.value = cryptoRaw;
   fiatInput.scrollLeft = 0;
