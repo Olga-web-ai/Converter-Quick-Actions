@@ -120,6 +120,14 @@ body {
   transform: none;
 }
 
+.payment-strip {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
 .converter-field__header,
 .converter-field__body,
 .converter-field__meta-row,
@@ -223,7 +231,10 @@ body {
 .app-shell[data-stage="ready"] .quick-actions,
 .app-shell[data-stage="ready"] .converter-field__support,
 .app-shell[data-stage="summary"] [data-reveal="summary"],
-.app-shell[data-stage="ready"] [data-reveal="summary"] {
+.app-shell[data-stage="ready"] [data-reveal="summary"],
+.app-shell[data-stage="content"] [data-reveal="payments"],
+.app-shell[data-stage="summary"] [data-reveal="payments"],
+.app-shell[data-stage="ready"] [data-reveal="payments"] {
   opacity: 1;
   transform: translateY(0);
 }
@@ -309,6 +320,71 @@ body {
 .phone-frame[data-device-mode="mobile"] .converter-form {
   position: relative;
   z-index: 2;
+}
+
+.payment-strip {
+  width: 100%;
+  padding: 2px 4px;
+}
+
+.payment-strip__logos {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+}
+
+.payment-strip__visa-mastercard {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.payment-strip__visa {
+  width: 34.44px;
+  height: 11.5px;
+  display: block;
+}
+
+.payment-strip__mastercard {
+  width: 24.27px;
+  height: 15px;
+  display: block;
+}
+
+.payment-strip__logo {
+  display: block;
+  width: 28.5px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.payment-strip__bank {
+  position: relative;
+  display: inline-block;
+  width: 28.5px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.payment-strip__bank-frame,
+.payment-strip__bank-icon {
+  position: absolute;
+  display: block;
+}
+
+.payment-strip__bank-frame {
+  inset: 0;
+  width: 28.5px;
+  height: 18px;
+}
+
+.payment-strip__bank-icon {
+  left: 6.18px;
+  top: 3.08px;
+  width: 16px;
+  height: 11.16px;
 }
 
 .converter-field {
