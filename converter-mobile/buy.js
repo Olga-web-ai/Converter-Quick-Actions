@@ -665,6 +665,7 @@ cryptoInput.addEventListener("input", (event) => {
 quickActions.forEach((button) => {
   button.addEventListener("click", () => {
     renderFromFiat(button.dataset.amount);
+    button.blur();
   });
 });
 

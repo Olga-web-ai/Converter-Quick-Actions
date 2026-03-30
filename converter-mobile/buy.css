@@ -1074,6 +1074,15 @@ body {
   display: none !important;
 }
 
+.quick-action:focus,
+.quick-action:focus-visible {
+  outline: none;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(180deg, #ebebeb 0%, #ebebeb 100%) border-box;
+  box-shadow: none;
+}
+
 .quick-action:hover,
 .asset-selector:hover {
   background:
