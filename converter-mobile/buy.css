@@ -1994,14 +1994,11 @@ body {
 .native-mobile-mode .quick-action,
 .native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action,
 .native-mobile-mode .quick-action:hover,
-.native-mobile-mode .quick-action:active,
 .native-mobile-mode .quick-action:focus,
 .native-mobile-mode .quick-action:focus-visible,
 .native-mobile-mode .quick-action.is-active,
 .native-mobile-mode .quick-action.is-active:hover,
-.native-mobile-mode .quick-action.is-active:active,
 .native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action:hover,
-.native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action:active,
 .native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action:focus,
 .native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action:focus-visible {
   background:
@@ -2010,4 +2007,14 @@ body {
   border-color: transparent;
   box-shadow: none;
   outline: none;
+}
+
+.native-mobile-mode .quick-action:active,
+.native-mobile-mode .quick-action.is-active:active,
+.native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action:active {
+  background:
+    linear-gradient(#f1f2f4, #f1f2f4) padding-box,
+    linear-gradient(180deg, #e4e6ea 0%, #d7dbe1 100%) border-box;
+  border-color: transparent;
+  box-shadow: none;
 }
