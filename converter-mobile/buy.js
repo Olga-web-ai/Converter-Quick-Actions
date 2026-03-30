@@ -367,8 +367,7 @@ function setFieldHover(field, hovering) {
 
 function syncQuickActions(amount) {
   quickActions.forEach((button) => {
-    const isActive = !isNativeMobileMode && Number(button.dataset.amount) === amount;
-    button.classList.toggle("is-active", isActive);
+    button.classList.remove("is-active");
   });
 }
 
@@ -481,9 +480,7 @@ function updateSummary(fiatValue, cryptoAmount, rewardAmount, eurValue) {
   summaryReward.textContent = rewardsVisible
     ? `+${formatReward(rewardAmount || 0)} Boost Points included`
     : "";
-  summaryCta.textContent = isLargeOrder
-    ? "Continue with Mercuryo PRO"
-    : `Pay ${formatFiat(fiatValue || 0)}`;
+  summaryCta.textContent = "Buy";
 
   rewardPill.dataset.state = rewardsVisible ? "on" : "off";
   summaryReward.dataset.state = rewardsVisible ? "on" : "off";
@@ -790,10 +787,10 @@ getField.addEventListener("click", (event) => {
 function runEntranceSequence() {
   const steps = [
     { stage: "nav", delay: 0 },
-    { stage: "fields", delay: 120 },
-    { stage: "content", delay: 250 },
-    { stage: "summary", delay: 430 },
-    { stage: "ready", delay: 560 },
+    { stage: "fields", delay: 180 },
+    { stage: "content", delay: 420 },
+    { stage: "summary", delay: 760 },
+    { stage: "ready", delay: 1000 },
   ];
 
   steps.forEach(({ stage, delay }) => {

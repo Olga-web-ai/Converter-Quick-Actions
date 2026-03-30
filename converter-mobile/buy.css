@@ -669,6 +669,7 @@ body {
 .amount-editor__input {
   appearance: none;
   -webkit-appearance: none;
+  caret-color: #3c0bff;
 }
 
 .amount-editor__decimal-placeholder {
@@ -1108,11 +1109,17 @@ body {
     0 1px 1px rgba(0, 0, 0, 0.02);
 }
 
-.quick-action:active,
 .asset-selector:active {
   background:
     linear-gradient(var(--surface-pressed), var(--surface-pressed)) padding-box,
     linear-gradient(180deg, #e7e8eb, #d8dbe0) border-box;
+}
+
+.quick-action:active {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(180deg, #ebebeb 0%, #ebebeb 100%) border-box;
+  box-shadow: none;
 }
 
 .quick-action.is-active {
