@@ -1989,3 +1989,19 @@ body {
     max-width: 45%;
   }
 }
+
+.native-mobile-mode .quick-action:hover,
+.native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action:hover,
+.native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action.is-active:hover {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(180deg, #ebebeb 0
+.native-mobile-mode .quick-action:hover,
+.native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action:hover,
+.native-mobile-mode .converter-field--pay[data-interaction="focus"] .quick-action.is-active:hover {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(180deg, #ebebeb 0%, #ebebeb 100%) border-box;
+  border-color: transparent;
+  box-shadow: none;
+}
