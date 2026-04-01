@@ -29,13 +29,16 @@ const currencyModal = document.querySelector('[data-role="currency-modal"]');
 const currencyModalClosers = [...document.querySelectorAll('[data-role="currency-modal-close"]')];
 const currencyOptionButtons = [...document.querySelectorAll('[data-role="currency-option"]')];
 const assetModal = document.querySelector('[data-role="asset-modal"]');
+const assetModalImage = document.querySelector('[data-role="asset-modal-image"]');
 const assetModalClosers = [...document.querySelectorAll('[data-role="asset-modal-close"]')];
 const assetFilterButtons = [...document.querySelectorAll('[data-role="asset-filter"]')];
 const assetNetworkClear = document.querySelector('[data-role="asset-network-clear"]');
+const assetNetworkTrigger = document.querySelector('[data-role="asset-network-trigger"]');
 const assetNetworkTriggerLabel = document.querySelector('[data-role="asset-network-trigger-label"]');
 const assetNetworkTriggerIcon = document.querySelector('[data-role="asset-network-trigger-icon"]');
 const assetNetworkRow = document.querySelector('[data-role="asset-network-row"]');
 const assetNetworkButtons = [...document.querySelectorAll('[data-role="asset-network"]')];
+const ASSET_MODAL_VERSION = "20260401-restore-static";
 const isLikelyMobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
   navigator.userAgent,
 );
@@ -313,39 +316,22 @@ function closeAssetModal() {
   phoneFrame.dataset.modal = "closed";
   assetModal.setAttribute("aria-hidden", "true");
   assetNetworkMenuOpen = false;
+  assetNetworkClear.hidden = true;
+  assetNetworkRow.hidden = true;
   updateAssetFilterUi();
 }
 
 function updateAssetModalImage() {
-  const filterMap = {
-    all: "All",
-    stablecoins: "Stablecoins",
-    crypto: "Crypto",
-  };
+  const nextImage =
+    assetNetworkMenuOpen
+      ? `./assets/screens/select-asset-all-networks.png?v=${ASSET_MODAL_VERSION}`
+      : !assetNetworkMenuOpen && selectedAssetNetwork
+      ? `./assets/screens/select-asset-network-solana.png?v=${ASSET_MODAL_VERSION}`
+      : `./assets/screens/select-asset-exact.png?v=${ASSET_MODAL_VERSION}`;
 
-  assetFilterButtons.forEach((button) => {
-    const isNetwork = button.dataset.filter === "network";
-    const isActive = isNetwork ? Boolean(selectedAssetNetwork) || assetNetworkMenuOpen : button.dataset.filter === assetCategory;
-    if (isNetwork) {
-      button.classList.remove("asset-modal__filter--active");
-      button.classList.toggle("asset-modal__network-control--selected", Boolean(selectedAssetNetwork));
-    } else {
-      button.classList.toggle("asset-modal__filter--active", isActive);
-    }
-  });
-
-  if (selectedAssetNetwork) {
-    assetNetworkTriggerLabel.textContent = "Solana";
-    assetNetworkTriggerIcon.hidden = false;
-    assetNetworkTriggerIcon.src = "./assets/icons/networks/solana.png";
-    assetNetworkClear.hidden = false;
-  } else {
-    assetNetworkTriggerLabel.textContent = "Network";
-    assetNetworkTriggerIcon.hidden = true;
-    assetNetworkTriggerIcon.src = "";
-    assetNetworkClear.hidden = true;
+  if (assetModalImage.getAttribute("src") !== nextImage) {
+    assetModalImage.setAttribute("src", nextImage);
   }
-
   assetModal.dataset.overlay = assetNetworkMenuOpen ? "network-open" : "default";
 }
 
@@ -362,8 +348,19 @@ function openAssetModal() {
 
 function updateAssetFilterUi() {
   assetNetworkRow.hidden = !assetNetworkMenuOpen;
-  if (assetNetworkMenuOpen) {
-    assetNetworkRow.scrollLeft = 0;
+  const useStaticSelectedNetwork = !assetNetworkMenuOpen && Boolean(selectedAssetNetwork);
+
+  assetNetworkClear.hidden = !useStaticSelectedNetwork;
+  assetNetworkTrigger.hidden = useStaticSelectedNetwork;
+
+  if (selectedAssetNetwork) {
+    assetNetworkTriggerLabel.textContent = "Solana";
+    assetNetworkTriggerIcon.hidden = false;
+    assetNetworkTriggerIcon.setAttribute("src", "./assets/icons/networks/solana.png");
+  } else {
+    assetNetworkTriggerLabel.textContent = "Network";
+    assetNetworkTriggerIcon.hidden = true;
+    assetNetworkTriggerIcon.setAttribute("src", "");
   }
 
   updateAssetModalImage();
@@ -718,9 +715,6 @@ assetModalClosers.forEach((button) => {
 assetFilterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     if (button.dataset.filter === "network") {
-      if (selectedAssetNetwork && !assetNetworkMenuOpen) {
-        return;
-      }
       assetNetworkMenuOpen = !assetNetworkMenuOpen;
       updateAssetFilterUi();
       return;
@@ -742,7 +736,6 @@ assetNetworkButtons.forEach((button) => {
 });
 
 assetNetworkClear.addEventListener("click", (event) => {
-  event.stopPropagation();
   selectedAssetNetwork = "";
   assetNetworkMenuOpen = false;
   updateAssetFilterUi();

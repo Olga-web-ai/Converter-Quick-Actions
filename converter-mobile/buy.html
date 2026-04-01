@@ -242,129 +242,38 @@
 
           <section class="asset-modal" data-role="asset-modal" aria-hidden="true">
             <div class="asset-modal__sheet" aria-label="Select asset">
-              <div class="asset-modal__panel">
-                <button class="asset-modal__close" type="button" data-role="asset-modal-close" aria-label="Close asset picker">×</button>
-                <h2 class="asset-modal__title">Select asset</h2>
+              <img
+                class="asset-modal__image"
+                data-role="asset-modal-image"
+                src="./assets/screens/select-asset-exact.png"
+                alt="Asset picker screen"
+              />
+              <button class="asset-modal__close-hitbox" type="button" data-role="asset-modal-close" aria-label="Close asset picker"></button>
+              <button class="asset-modal__hitbox asset-modal__hitbox--all" type="button" data-role="asset-filter" data-filter="all" aria-label="All assets"></button>
+              <button class="asset-modal__hitbox asset-modal__hitbox--stable" type="button" data-role="asset-filter" data-filter="stablecoins" aria-label="Stablecoins filter"></button>
+              <button class="asset-modal__hitbox asset-modal__hitbox--crypto" type="button" data-role="asset-filter" data-filter="crypto" aria-label="Crypto filter"></button>
+              <button class="asset-modal__hitbox asset-modal__hitbox--network" type="button" data-role="asset-filter" data-filter="network" aria-label="Network filter"></button>
+              <button class="asset-modal__selected-clear-hitbox" type="button" data-role="asset-network-clear" aria-label="Clear selected network" hidden></button>
+              <div class="asset-modal__network-trigger" data-role="asset-network-trigger" aria-hidden="true">
+                <img class="asset-modal__network-trigger-icon" data-role="asset-network-trigger-icon" src="./assets/icons/networks/arbitrum.png" alt="" hidden />
+                <span class="asset-modal__network-trigger-label" data-role="asset-network-trigger-label">Network</span>
+                <span class="asset-modal__network-trigger-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L4 4L7 1" />
+                  </svg>
+                </span>
+              </div>
 
-                <div class="asset-modal__search" aria-hidden="true">
-                  <span class="asset-modal__search-placeholder">Search</span>
-                  <span class="asset-modal__search-icon">⌕</span>
-                </div>
-
-                <div class="asset-modal__filters">
-                  <div class="asset-modal__toggle-group">
-                    <button class="asset-modal__filter asset-modal__filter--active" type="button" data-role="asset-filter" data-filter="all">All</button>
-                    <button class="asset-modal__filter" type="button" data-role="asset-filter" data-filter="stablecoins">Stablecoins</button>
-                    <button class="asset-modal__filter" type="button" data-role="asset-filter" data-filter="crypto">Crypto</button>
-                  </div>
-                  <button class="asset-modal__network-control" type="button" data-role="asset-filter" data-filter="network" aria-label="Network filter">
-                    <img class="asset-modal__network-control-icon" data-role="asset-network-trigger-icon" src="./assets/icons/networks/solana.png" alt="" hidden />
-                    <span class="asset-modal__network-control-label" data-role="asset-network-trigger-label">Network</span>
-                    <span class="asset-modal__network-control-clear" data-role="asset-network-clear" hidden>×</span>
-                    <span class="asset-modal__network-control-chevron" aria-hidden="true">
-                      <svg viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L4 4L7 1" />
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-
-                <div class="asset-modal__network-options" data-role="asset-network-row" hidden>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="ethereum" aria-label="Ethereum">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/ethereum.png" alt="" />
-                    <span class="asset-modal__network-option-label">Ethereum</span>
-                  </button>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="bsc" aria-label="BNB Chain">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/binancesmartchain.png" alt="" />
-                    <span class="asset-modal__network-option-label">BNB Chain</span>
-                  </button>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="solana" aria-label="Solana">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/solana.png" alt="" />
-                    <span class="asset-modal__network-option-label">Solana</span>
-                  </button>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="arbitrum" aria-label="Arbitrum">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/arbitrum.png" alt="" />
-                    <span class="asset-modal__network-option-label">Arbitrum</span>
-                  </button>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="base" aria-label="Base">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/base.png" alt="" />
-                    <span class="asset-modal__network-option-label">Base</span>
-                  </button>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="polygon" aria-label="Polygon">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/polygon.png" alt="" />
-                    <span class="asset-modal__network-option-label">Polygon</span>
-                  </button>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="optimism" aria-label="Optimism">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/optimism.png" alt="" />
-                    <span class="asset-modal__network-option-label">Optimism</span>
-                  </button>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="near" aria-label="Near">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/near.png" alt="" />
-                    <span class="asset-modal__network-option-label">Near</span>
-                  </button>
-                  <button class="asset-modal__network-option" type="button" data-role="asset-network" data-network="stellar" aria-label="Stellar">
-                    <img class="asset-modal__network-option-icon" src="./assets/icons/networks/stellar.png" alt="" />
-                    <span class="asset-modal__network-option-label">Stellar</span>
-                  </button>
-                </div>
-
-                <div class="asset-modal__list">
-                  <section class="asset-modal__section">
-                    <h3 class="asset-modal__section-title">Last used</h3>
-                    <article class="asset-modal__asset-row">
-                      <img class="asset-modal__asset-icon" src="./assets/icons/tokens/usdc.png" alt="" />
-                      <div class="asset-modal__asset-copy">
-                        <div class="asset-modal__asset-title-row">
-                          <span class="asset-modal__asset-symbol">USDC</span>
-                          <span class="asset-modal__asset-tag">
-                            <img src="./assets/icons/networks/ethereum.png" alt="" />
-                            <span>ETHEREUM</span>
-                          </span>
-                        </div>
-                        <div class="asset-modal__asset-name">USDC</div>
-                      </div>
-                    </article>
-                  </section>
-
-                  <section class="asset-modal__section">
-                    <h3 class="asset-modal__section-title">Popular assets</h3>
-                    <article class="asset-modal__asset-row">
-                      <img class="asset-modal__asset-icon" src="./assets/icons/tokens/usdt.png" alt="" />
-                      <div class="asset-modal__asset-copy">
-                        <div class="asset-modal__asset-title-row">
-                          <span class="asset-modal__asset-symbol">USDT</span>
-                          <span class="asset-modal__asset-tag">
-                            <img src="./assets/icons/networks/ethereum.png" alt="" />
-                            <span>ERC-20</span>
-                          </span>
-                        </div>
-                        <div class="asset-modal__asset-name">USDT</div>
-                      </div>
-                    </article>
-                    <article class="asset-modal__asset-row">
-                      <img class="asset-modal__asset-icon" src="./assets/icons/tokens/eth.png" alt="" />
-                      <div class="asset-modal__asset-copy">
-                        <div class="asset-modal__asset-title-row">
-                          <span class="asset-modal__asset-symbol">ETH</span>
-                          <span class="asset-modal__asset-tag">
-                            <img src="./assets/icons/networks/arbitrum.png" alt="" />
-                            <span>ARBITRUM</span>
-                          </span>
-                        </div>
-                        <div class="asset-modal__asset-name">Ethereum</div>
-                      </div>
-                    </article>
-                    <article class="asset-modal__asset-row">
-                      <img class="asset-modal__asset-icon" src="./assets/icons/tokens/btc.png" alt="" />
-                      <div class="asset-modal__asset-copy">
-                        <div class="asset-modal__asset-title-row">
-                          <span class="asset-modal__asset-symbol">BTC</span>
-                        </div>
-                        <div class="asset-modal__asset-name">Bitcoin</div>
-                      </div>
-                    </article>
-                  </section>
-                </div>
+              <div class="asset-modal__network-options" data-role="asset-network-row" hidden>
+                <button class="asset-modal__network-option asset-modal__network-option--solana" type="button" data-role="asset-network" data-network="solana" aria-label="Solana"></button>
+                <button class="asset-modal__network-option asset-modal__network-option--arbitrum" type="button" data-role="asset-network" data-network="arbitrum" aria-label="Arbitrum"></button>
+                <button class="asset-modal__network-option asset-modal__network-option--polygon" type="button" data-role="asset-network" data-network="polygon" aria-label="Polygon"></button>
+                <button class="asset-modal__network-option asset-modal__network-option--bsc" type="button" data-role="asset-network" data-network="bsc" aria-label="BNB Chain"></button>
+                <button class="asset-modal__network-option asset-modal__network-option--ethereum" type="button" data-role="asset-network" data-network="ethereum" aria-label="Ethereum"></button>
+                <button class="asset-modal__network-option asset-modal__network-option--base" type="button" data-role="asset-network" data-network="base" aria-label="Base"></button>
+                <button class="asset-modal__network-option asset-modal__network-option--optimism" type="button" data-role="asset-network" data-network="optimism" aria-label="Optimism"></button>
+                <button class="asset-modal__network-option asset-modal__network-option--near" type="button" data-role="asset-network" data-network="near" aria-label="Near"></button>
+                <button class="asset-modal__network-option asset-modal__network-option--stellar" type="button" data-role="asset-network" data-network="stellar" aria-label="Stellar"></button>
               </div>
             </div>
           </section>
