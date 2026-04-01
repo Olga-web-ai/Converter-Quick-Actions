@@ -349,7 +349,7 @@ function updateAssetFilterUi() {
   const useStaticSelectedNetwork = !assetNetworkMenuOpen && Boolean(selectedAssetNetwork);
 
   assetNetworkClear.hidden = !useStaticSelectedNetwork;
-  assetNetworkTrigger.hidden = useStaticSelectedNetwork;
+  assetNetworkTrigger.hidden = assetNetworkMenuOpen || useStaticSelectedNetwork;
 
   if (selectedAssetNetwork) {
     assetNetworkTriggerLabel.textContent = "Solana";
