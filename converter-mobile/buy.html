@@ -252,9 +252,11 @@
                 </div>
 
                 <div class="asset-modal__filters">
-                  <button class="asset-modal__filter asset-modal__filter--active" type="button" data-role="asset-filter" data-filter="all">All</button>
-                  <button class="asset-modal__filter" type="button" data-role="asset-filter" data-filter="stablecoins">Stablecoins</button>
-                  <button class="asset-modal__filter" type="button" data-role="asset-filter" data-filter="crypto">Crypto</button>
+                  <div class="asset-modal__toggle-group">
+                    <button class="asset-modal__filter asset-modal__filter--active" type="button" data-role="asset-filter" data-filter="all">All</button>
+                    <button class="asset-modal__filter" type="button" data-role="asset-filter" data-filter="stablecoins">Stablecoins</button>
+                    <button class="asset-modal__filter" type="button" data-role="asset-filter" data-filter="crypto">Crypto</button>
+                  </div>
                   <button class="asset-modal__network-control" type="button" data-role="asset-filter" data-filter="network" aria-label="Network filter">
                     <img class="asset-modal__network-control-icon" data-role="asset-network-trigger-icon" src="./assets/icons/networks/solana.png" alt="" hidden />
                     <span class="asset-modal__network-control-label" data-role="asset-network-trigger-label">Network</span>

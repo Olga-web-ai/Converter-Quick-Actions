@@ -1878,10 +1878,22 @@ body {
 
 .asset-modal__filters {
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 12px;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.asset-modal__toggle-group {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  border-radius: 20px;
+  border: 1px solid #e8e8ea;
+  background: #f6f6f7;
 }
 
 .asset-modal__filter {
@@ -1894,45 +1906,18 @@ body {
   color: #23252d;
   font: 500 15px/1 "Suisse Intl", sans-serif;
   cursor: pointer;
+  flex: 1 1 0;
 }
 
-.asset-modal__filters > .asset-modal__filter[data-filter="all"],
-.asset-modal__filters > .asset-modal__filter[data-filter="stablecoins"],
-.asset-modal__filters > .asset-modal__filter[data-filter="crypto"] {
+.asset-modal__toggle-group > .asset-modal__filter + .asset-modal__filter {
   position: relative;
 }
 
-.asset-modal__filters > .asset-modal__filter[data-filter="all"] {
-  grid-column: 1;
-  justify-self: start;
-}
-
-.asset-modal__filters > .asset-modal__filter[data-filter="stablecoins"] {
-  grid-column: 1;
-  justify-self: center;
-}
-
-.asset-modal__filters > .asset-modal__filter[data-filter="crypto"] {
-  grid-column: 1;
-  justify-self: end;
-}
-
-.asset-modal__filters::before {
+.asset-modal__toggle-group > .asset-modal__filter + .asset-modal__filter::before {
   content: "";
-  grid-column: 1;
-  grid-row: 1;
-  display: block;
-  height: 40px;
-  border-radius: 20px;
-  border: 1px solid #e8e8ea;
-  background: #f6f6f7;
-}
-
-.asset-modal__filters::after {
-  content: "";
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: center;
+  position: absolute;
+  left: 0;
+  top: 8px;
   width: 1px;
   height: 24px;
   background: #dddfe3;
@@ -1959,6 +1944,7 @@ body {
   color: #23252d;
   font: 500 15px/1 "Suisse Intl", sans-serif;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
 .asset-modal__network-control--selected {
