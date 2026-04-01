@@ -1681,14 +1681,15 @@ body {
 
 .asset-modal__network-image {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: 262px;
   display: block;
   width: 100%;
   height: auto;
   z-index: 1;
   pointer-events: none;
   opacity: 0;
-  clip-path: inset(274px 0 0 0);
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-image {
@@ -1696,36 +1697,19 @@ body {
 }
 
 .asset-modal__network-cover {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 274px;
-  height: 0;
-  background: #ffffff;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
+  display: none;
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-cover {
-  opacity: 1;
-}
-
-.asset-modal__network-control-cover {
-  position: absolute;
-  right: 8px;
-  top: 220px;
-  width: 100px;
-  height: 48px;
-  border-radius: 24px;
-  background: #ffffff;
-  z-index: 2;
-  pointer-events: none;
   opacity: 0;
 }
 
+.asset-modal__network-control-cover {
+  display: none;
+}
+
 .asset-modal[data-overlay="network-open"] .asset-modal__network-control-cover {
-  opacity: 1;
+  opacity: 0;
 }
 
 .asset-modal__close-hitbox {
