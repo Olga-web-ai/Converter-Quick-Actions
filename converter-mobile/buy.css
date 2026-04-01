@@ -1855,12 +1855,14 @@ body {
 
 .asset-modal__search {
   margin-top: 28px;
+  margin-inline: auto;
+  width: 358px;
   height: 64px;
-  border-radius: 22px;
-  border: 1px solid #e3e4e8;
+  border-radius: 16px;
+  border: 1px solid #e6e6e6;
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.02);
-  padding: 0 20px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1868,16 +1870,18 @@ body {
 
 .asset-modal__search-placeholder {
   color: #a8abb2;
-  font: 400 24px/1 "Suisse Intl", sans-serif;
+  font: 400 17px/24px "Brutal Type", "Suisse Intl", sans-serif;
 }
 
 .asset-modal__search-icon {
   color: #6f7278;
-  font: 400 28px/1 "Suisse Intl", sans-serif;
+  font: 400 24px/1 "Suisse Intl", sans-serif;
 }
 
 .asset-modal__filters {
   margin-top: 20px;
+  margin-inline: auto;
+  width: 358px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1885,35 +1889,47 @@ body {
 }
 
 .asset-modal__toggle-group {
-  flex: 1 1 auto;
-  min-width: 0;
+  width: 230px;
   height: 40px;
   display: inline-flex;
   align-items: center;
-  padding: 0 6px;
-  border-radius: 20px;
+  padding: 0;
+  border-radius: 30px;
   border: 1px solid #e8e8ea;
   background: #f6f6f7;
+  overflow: hidden;
 }
 
 .asset-modal__filter {
   appearance: none;
   border: 0;
   background: transparent;
-  padding: 0 18px;
-  height: 40px;
-  border-radius: 20px;
+  padding: 0 16px;
+  height: 32px;
+  border-radius: 16px;
   color: #23252d;
-  font: 500 15px/1 "Suisse Intl", sans-serif;
+  font: 500 12px/15px "Suisse Intl", sans-serif;
   cursor: pointer;
-  flex: 1 1 0;
+  flex: 0 0 auto;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.asset-modal__toggle-group > .asset-modal__filter + .asset-modal__filter {
+.asset-modal__toggle-group > .asset-modal__filter[data-filter="all"] {
+  min-width: 56px;
+}
+
+.asset-modal__toggle-group > .asset-modal__filter[data-filter="stablecoins"] {
+  flex: 1 1 auto;
+}
+
+.asset-modal__toggle-group > .asset-modal__filter[data-filter="crypto"] {
   position: relative;
 }
 
-.asset-modal__toggle-group > .asset-modal__filter + .asset-modal__filter::before {
+.asset-modal__toggle-group > .asset-modal__filter[data-filter="crypto"]::before {
   content: "";
   position: absolute;
   left: 0;
@@ -1933,16 +1949,17 @@ body {
   appearance: none;
   border: 1px solid #e8e8ea;
   background: #f6f6f7;
-  height: 40px;
-  min-width: 123px;
-  border-radius: 20px;
+  width: 89px;
+  height: 32px;
+  min-width: 89px;
+  border-radius: 16px;
   padding: 0 14px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   justify-content: flex-start;
   color: #23252d;
-  font: 500 15px/1 "Suisse Intl", sans-serif;
+  font: 500 12px/15px "Suisse Intl", sans-serif;
   cursor: pointer;
   flex: 0 0 auto;
 }
@@ -1987,6 +2004,7 @@ body {
   position: static;
   height: auto;
   margin-top: 12px;
+  margin-inline: auto;
   padding: 0 0 4px;
   background: transparent;
   display: flex;
@@ -1996,6 +2014,7 @@ body {
   overflow-y: hidden;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  width: 358px;
 }
 
 .asset-modal__network-options::-webkit-scrollbar {
