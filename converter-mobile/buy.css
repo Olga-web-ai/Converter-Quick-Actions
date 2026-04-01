@@ -1692,7 +1692,7 @@ body {
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-image {
-  opacity: 1;
+  opacity: 0;
 }
 
 .asset-modal__close-hitbox {
@@ -1824,82 +1824,50 @@ body {
 
 .asset-modal__network-options {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: 267px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
   z-index: 3;
-  pointer-events: none;
+  pointer-events: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.asset-modal__network-options::-webkit-scrollbar {
+  display: none;
 }
 
 .asset-modal__network-option {
-  position: absolute;
-  border: 0;
-  background: transparent;
-  padding: 0;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid #e8e8ea;
+  border-radius: 20px;
+  background: #f6f6f7;
+  color: #23252d;
+  font: 500 12px/15px "Suisse Intl", "Inter", sans-serif;
+  letter-spacing: -0.01em;
   cursor: pointer;
-  border-radius: 18px;
-  pointer-events: auto;
 }
 
-.asset-modal__network-option--solana {
-  left: 12px;
-  top: 268px;
-  width: 112px;
-  height: 32px;
+.asset-modal__network-option-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  display: block;
 }
 
-.asset-modal__network-option--arbitrum {
-  left: 130px;
-  top: 268px;
-  width: 124px;
-  height: 32px;
-}
-
-.asset-modal__network-option--polygon {
-  left: 260px;
-  top: 268px;
-  width: 112px;
-  height: 32px;
-}
-
-.asset-modal__network-option--bsc {
-  left: 12px;
-  top: 308px;
-  width: 132px;
-  height: 32px;
-}
-
-.asset-modal__network-option--ethereum {
-  left: 150px;
-  top: 308px;
-  width: 126px;
-  height: 32px;
-}
-
-.asset-modal__network-option--base {
-  left: 282px;
-  top: 308px;
-  width: 90px;
-  height: 32px;
-}
-
-.asset-modal__network-option--optimism {
-  left: 12px;
-  top: 348px;
-  width: 126px;
-  height: 32px;
-}
-
-.asset-modal__network-option--near {
-  left: 144px;
-  top: 348px;
-  width: 88px;
-  height: 32px;
-}
-
-.asset-modal__network-option--stellar {
-  left: 238px;
-  top: 348px;
-  width: 96px;
-  height: 32px;
+.asset-modal__network-option-label {
+  white-space: nowrap;
 }
 
 .browser-nav {

@@ -346,6 +346,9 @@ function openAssetModal() {
 
 function updateAssetFilterUi() {
   assetNetworkRow.hidden = !assetNetworkMenuOpen;
+  if (assetNetworkMenuOpen) {
+    assetNetworkRow.scrollLeft = 0;
+  }
   const useStaticSelectedNetwork = !assetNetworkMenuOpen && Boolean(selectedAssetNetwork);
 
   assetNetworkClear.hidden = !useStaticSelectedNetwork;
