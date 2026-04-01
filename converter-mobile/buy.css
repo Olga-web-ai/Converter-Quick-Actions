@@ -1822,56 +1822,6 @@ body {
   stroke-linejoin: round;
 }
 
-.asset-modal__network-options {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 264px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: #ffffff;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  z-index: 3;
-  pointer-events: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.asset-modal__network-options::-webkit-scrollbar {
-  display: none;
-}
-
-.asset-modal__network-option {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 32px;
-  padding: 0 14px;
-  border: 1px solid #e8e8ea;
-  border-radius: 16px;
-  background: #f6f6f7;
-  color: #23252d;
-  font: 500 12px/15px "Suisse Intl", "Inter", sans-serif;
-  letter-spacing: -0.01em;
-  cursor: pointer;
-}
-
-.asset-modal__network-option-icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 auto;
-  display: block;
-}
-
-.asset-modal__network-option-label {
-  white-space: nowrap;
-}
-
 .asset-modal__panel {
   position: absolute;
   inset: 28px 0 0;
@@ -2053,6 +2003,57 @@ body {
   margin-top: 12px;
   padding: 0 0 4px;
   background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.asset-modal__network-options::-webkit-scrollbar {
+  display: none;
+}
+
+.asset-modal__network-option {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid #e8e8ea;
+  border-radius: 20px;
+  background: #f6f6f7;
+  color: #23252d;
+  font: 500 15px/1 "Suisse Intl", sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.asset-modal__network-option:hover,
+.asset-modal__network-option:focus-visible {
+  background: #ededf0;
+  border-color: #e1e2e6;
+  outline: 0;
+}
+
+.asset-modal__network-option:active {
+  background: #e7e8ec;
+  border-color: #d8d9de;
+}
+
+.asset-modal__network-option-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  display: block;
+}
+
+.asset-modal__network-option-label {
+  white-space: nowrap;
 }
 
 .asset-modal__list {
