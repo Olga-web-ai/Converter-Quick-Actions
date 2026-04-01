@@ -1688,7 +1688,7 @@ body {
   z-index: 1;
   pointer-events: none;
   opacity: 0;
-  clip-path: inset(276px 0 0 0);
+  clip-path: inset(292px 0 0 0);
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-image {
