@@ -1711,6 +1711,23 @@ body {
   opacity: 1;
 }
 
+.asset-modal__network-control-cover {
+  position: absolute;
+  right: 8px;
+  top: 220px;
+  width: 100px;
+  height: 48px;
+  border-radius: 24px;
+  background: #ffffff;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.asset-modal[data-overlay="network-open"] .asset-modal__network-control-cover {
+  opacity: 1;
+}
+
 .asset-modal__close-hitbox {
   position: absolute;
   border: 0;
@@ -1799,7 +1816,7 @@ body {
   color: #23252d;
   font: 500 12px/15px "Suisse Intl", "Inter", sans-serif;
   letter-spacing: -0.01em;
-  z-index: 1;
+  z-index: 3;
   pointer-events: none;
   white-space: nowrap;
 }
