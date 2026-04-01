@@ -1688,10 +1688,26 @@ body {
   z-index: 1;
   pointer-events: none;
   opacity: 0;
-  clip-path: inset(292px 0 0 0);
+  clip-path: inset(280px 0 0 0);
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-image {
+  opacity: 1;
+}
+
+.asset-modal__network-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 280px;
+  height: 14px;
+  background: #ffffff;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.asset-modal[data-overlay="network-open"] .asset-modal__network-cover {
   opacity: 1;
 }
 
@@ -1825,7 +1841,7 @@ body {
 .asset-modal__network-options {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 4;
   pointer-events: none;
 }
 
