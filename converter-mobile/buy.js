@@ -323,9 +323,7 @@ function closeAssetModal() {
 
 function updateAssetModalImage() {
   const nextImage =
-    assetNetworkMenuOpen
-      ? `./assets/screens/select-asset-all-networks.png?v=${ASSET_MODAL_VERSION}`
-      : !assetNetworkMenuOpen && selectedAssetNetwork
+    !assetNetworkMenuOpen && selectedAssetNetwork
       ? `./assets/screens/select-asset-network-solana.png?v=${ASSET_MODAL_VERSION}`
       : `./assets/screens/select-asset-exact.png?v=${ASSET_MODAL_VERSION}`;
 
