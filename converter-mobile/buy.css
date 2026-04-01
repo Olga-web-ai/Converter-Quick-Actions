@@ -1872,6 +1872,263 @@ body {
   white-space: nowrap;
 }
 
+.asset-modal__panel {
+  position: absolute;
+  inset: 28px 0 0;
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  padding: 22px 16px 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100% - 28px);
+}
+
+.asset-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid #e8e8ea;
+  background: #f7f7f8;
+  color: #23252d;
+  font: 400 28px/1 "Suisse Intl", sans-serif;
+  cursor: pointer;
+}
+
+.asset-modal__title {
+  margin: 60px 0 0;
+  font: 600 28px/1.08 "Suisse Intl", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.asset-modal__search {
+  margin-top: 28px;
+  height: 64px;
+  border-radius: 22px;
+  border: 1px solid #e3e4e8;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.02);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.asset-modal__search-placeholder {
+  color: #a8abb2;
+  font: 400 24px/1 "Suisse Intl", sans-serif;
+}
+
+.asset-modal__search-icon {
+  color: #6f7278;
+  font: 400 28px/1 "Suisse Intl", sans-serif;
+}
+
+.asset-modal__filters {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.asset-modal__filter {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0 18px;
+  height: 40px;
+  border-radius: 20px;
+  color: #23252d;
+  font: 500 15px/1 "Suisse Intl", sans-serif;
+  cursor: pointer;
+}
+
+.asset-modal__filters > .asset-modal__filter[data-filter="all"],
+.asset-modal__filters > .asset-modal__filter[data-filter="stablecoins"],
+.asset-modal__filters > .asset-modal__filter[data-filter="crypto"] {
+  position: relative;
+}
+
+.asset-modal__filters > .asset-modal__filter[data-filter="all"] {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.asset-modal__filters > .asset-modal__filter[data-filter="stablecoins"] {
+  grid-column: 1;
+  justify-self: center;
+}
+
+.asset-modal__filters > .asset-modal__filter[data-filter="crypto"] {
+  grid-column: 1;
+  justify-self: end;
+}
+
+.asset-modal__filters::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid #e8e8ea;
+  background: #f6f6f7;
+}
+
+.asset-modal__filters::after {
+  content: "";
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  width: 1px;
+  height: 24px;
+  background: #dddfe3;
+}
+
+.asset-modal__filter--active {
+  color: #fff;
+  background: #0f1013;
+  box-shadow: 0 0 0 2px #4d2fff;
+}
+
+.asset-modal__network-control {
+  appearance: none;
+  border: 1px solid #e8e8ea;
+  background: #f6f6f7;
+  height: 40px;
+  min-width: 123px;
+  border-radius: 20px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  color: #23252d;
+  font: 500 15px/1 "Suisse Intl", sans-serif;
+  cursor: pointer;
+}
+
+.asset-modal__network-control--selected {
+  background: #f6f6f7;
+}
+
+.asset-modal__network-control-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.asset-modal__network-control-label {
+  white-space: nowrap;
+}
+
+.asset-modal__network-control-chevron,
+.asset-modal__network-control-clear {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.asset-modal__network-control-chevron svg {
+  width: 8px;
+  height: 5px;
+}
+
+.asset-modal__network-control-chevron path {
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.asset-modal__network-control-clear {
+  font: 400 18px/1 "Suisse Intl", sans-serif;
+}
+
+.asset-modal__network-options {
+  position: static;
+  height: auto;
+  margin-top: 12px;
+  padding: 0 0 4px;
+  background: transparent;
+}
+
+.asset-modal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin-top: 20px;
+}
+
+.asset-modal__section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.asset-modal__section-title {
+  margin: 0;
+  font: 500 17px/1.2 "Suisse Intl", sans-serif;
+  color: #23252d;
+}
+
+.asset-modal__asset-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.asset-modal__asset-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.asset-modal__asset-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.asset-modal__asset-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.asset-modal__asset-symbol {
+  font: 500 24px/1.05 "Suisse Intl", sans-serif;
+  color: #23252d;
+}
+
+.asset-modal__asset-name {
+  font: 400 15px/1.1 "Suisse Intl", sans-serif;
+  color: #7c7d83;
+}
+
+.asset-modal__asset-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 14px;
+  border: 1px solid #e8e8ea;
+  background: #fbfbfc;
+  color: #7c7d83;
+  font: 500 13px/1 "Suisse Intl", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.asset-modal__asset-tag img {
+  width: 14px;
+  height: 14px;
+}
+
 .browser-nav {
   transition:
     opacity 160ms ease,
