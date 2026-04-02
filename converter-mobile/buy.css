@@ -1680,6 +1680,22 @@ body {
   height: auto;
 }
 
+.asset-modal__header-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 410px;
+  display: none;
+  background: #ffffff;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.asset-modal[data-overlay="network-open"] .asset-modal__header-cover {
+  display: block;
+}
+
 .asset-modal__search-overlay {
   position: absolute;
   top: 0;
@@ -1688,8 +1704,7 @@ body {
   width: 100%;
   height: auto;
   pointer-events: none;
-  z-index: 1;
-  clip-path: inset(0 0 calc(100% - 226px) 0);
+  z-index: 2;
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__search-overlay {
