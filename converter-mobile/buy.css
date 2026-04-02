@@ -1680,6 +1680,23 @@ body {
   height: auto;
 }
 
+.asset-modal__search-cover {
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  top: 142px;
+  height: 89px;
+  display: none;
+  background: #ffffff;
+  border-radius: 24px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.asset-modal[data-overlay="network-open"] .asset-modal__search-cover {
+  display: block;
+}
+
 .asset-modal__search-overlay {
   position: absolute;
   inset: 0;
