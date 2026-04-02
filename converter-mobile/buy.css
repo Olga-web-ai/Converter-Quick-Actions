@@ -1683,7 +1683,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 294px;
+  top: 276px;
   display: block;
   width: 100%;
   height: auto;
@@ -1697,15 +1697,19 @@ body {
 }
 
 .asset-modal__network-cover {
-  display: none;
-}
-
-.asset-modal[data-overlay="network-open"] .asset-modal__network-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 640px;
+  height: 92px;
+  background: #ffffff;
+  z-index: 1;
+  pointer-events: none;
   opacity: 0;
 }
 
-.asset-modal__network-control-cover {
-  display: none;
+.asset-modal[data-overlay="network-open"] .asset-modal__network-cover {
+  opacity: 1;
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-control-cover {
@@ -1857,63 +1861,63 @@ body {
 
 .asset-modal__network-option--solana {
   left: 12px;
-  top: 296px;
+  top: 278px;
   width: 112px;
   height: 32px;
 }
 
 .asset-modal__network-option--arbitrum {
   left: 130px;
-  top: 296px;
+  top: 278px;
   width: 124px;
   height: 32px;
 }
 
 .asset-modal__network-option--polygon {
   left: 260px;
-  top: 296px;
+  top: 278px;
   width: 112px;
   height: 32px;
 }
 
 .asset-modal__network-option--bsc {
   left: 12px;
-  top: 367px;
+  top: 349px;
   width: 132px;
   height: 32px;
 }
 
 .asset-modal__network-option--ethereum {
   left: 150px;
-  top: 367px;
+  top: 349px;
   width: 126px;
   height: 32px;
 }
 
 .asset-modal__network-option--base {
   left: 282px;
-  top: 367px;
+  top: 349px;
   width: 90px;
   height: 32px;
 }
 
 .asset-modal__network-option--optimism {
   left: 12px;
-  top: 438px;
+  top: 420px;
   width: 126px;
   height: 32px;
 }
 
 .asset-modal__network-option--near {
   left: 144px;
-  top: 438px;
+  top: 420px;
   width: 88px;
   height: 32px;
 }
 
 .asset-modal__network-option--stellar {
   left: 238px;
-  top: 438px;
+  top: 420px;
   width: 96px;
   height: 32px;
 }
