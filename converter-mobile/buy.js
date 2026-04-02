@@ -333,7 +333,7 @@ function updateAssetModalImage() {
   if (assetModalImage.getAttribute("src") !== nextImage) {
     assetModalImage.setAttribute("src", nextImage);
   }
-  assetModal.dataset.overlay = "default";
+  assetModal.dataset.overlay = assetNetworkMenuOpen ? "network-open" : "default";
 }
 
 function openAssetModal() {
