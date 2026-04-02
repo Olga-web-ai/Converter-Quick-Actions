@@ -38,7 +38,7 @@ const assetNetworkTriggerLabel = document.querySelector('[data-role="asset-netwo
 const assetNetworkTriggerIcon = document.querySelector('[data-role="asset-network-trigger-icon"]');
 const assetNetworkRow = document.querySelector('[data-role="asset-network-row"]');
 const assetNetworkButtons = [...document.querySelectorAll('[data-role="asset-network"]')];
-const ASSET_MODAL_VERSION = "20260402-network-open-screen";
+const ASSET_MODAL_VERSION = "20260402-network-overlay";
 const isLikelyMobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
   navigator.userAgent,
 );
@@ -324,16 +324,14 @@ function closeAssetModal() {
 function updateAssetModalImage() {
   let nextImage = `./assets/screens/select-asset-exact.png?v=${ASSET_MODAL_VERSION}`;
 
-  if (assetNetworkMenuOpen) {
-    nextImage = `./assets/screens/select-asset-all-networks.png?v=${ASSET_MODAL_VERSION}`;
-  } else if (selectedAssetNetwork) {
+  if (selectedAssetNetwork) {
     nextImage = `./assets/screens/select-asset-network-solana.png?v=${ASSET_MODAL_VERSION}`;
   }
 
   if (assetModalImage.getAttribute("src") !== nextImage) {
     assetModalImage.setAttribute("src", nextImage);
   }
-  assetModal.dataset.overlay = "default";
+  assetModal.dataset.overlay = assetNetworkMenuOpen ? "network-open" : "default";
 }
 
 function openAssetModal() {
@@ -352,7 +350,7 @@ function updateAssetFilterUi() {
   const useStaticSelectedNetwork = !assetNetworkMenuOpen && Boolean(selectedAssetNetwork);
 
   assetNetworkClear.hidden = !useStaticSelectedNetwork;
-  assetNetworkTrigger.hidden = assetNetworkMenuOpen || useStaticSelectedNetwork;
+  assetNetworkTrigger.hidden = useStaticSelectedNetwork;
 
   if (selectedAssetNetwork) {
     assetNetworkTriggerLabel.textContent = "Solana";

@@ -767,7 +767,7 @@ body {
   width: 121px;
   max-width: 121px;
   height: 48px;
-  padding: 4px 16px 4px 4px;
+  padding: 4px 24px 4px 4px;
   gap: 8px;
   background: #f5f5f6;
   border-color: #ebebeb;
@@ -1684,7 +1684,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 252px;
+  top: 258px;
   display: block;
   width: 100%;
   height: auto;
@@ -1705,12 +1705,12 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 596px;
-  height: 120px;
-  background: #ffffff;
-  z-index: 1;
-  pointer-events: none;
+  top: 428px;
+  height: 86px;
   display: block;
+  background: #ffffff;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-control-cover {
@@ -1862,9 +1862,9 @@ body {
 
 .asset-modal__network-option--cluster {
   left: 12px;
-  top: 252px;
+  top: 258px;
   width: 360px;
-  height: 228px;
+  height: 170px;
 }
 
 .browser-nav {
