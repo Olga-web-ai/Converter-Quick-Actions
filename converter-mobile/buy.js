@@ -349,10 +349,10 @@ function openAssetModal() {
 
 function updateAssetFilterUi() {
   assetNetworkRow.hidden = !assetNetworkMenuOpen;
-  const useStaticSelectedNetwork = !assetNetworkMenuOpen && Boolean(selectedAssetNetwork);
+  const useStaticSelectedNetwork = Boolean(selectedAssetNetwork);
 
   assetNetworkClear.hidden = !useStaticSelectedNetwork;
-  assetNetworkTrigger.hidden = useStaticSelectedNetwork;
+  assetNetworkTrigger.hidden = useStaticSelectedNetwork || assetNetworkMenuOpen;
 
   if (selectedAssetNetwork) {
     assetNetworkTriggerLabel.textContent = "Solana";
