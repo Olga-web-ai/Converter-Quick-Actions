@@ -1689,6 +1689,7 @@ body {
   height: auto;
   pointer-events: none;
   z-index: 1;
+  clip-path: inset(0 0 calc(100% - 252px) 0);
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__search-overlay {
