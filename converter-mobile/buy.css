@@ -1683,7 +1683,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 244px;
+  top: 268px;
   display: block;
   width: 100%;
   height: auto;
@@ -1878,42 +1878,42 @@ body {
 
 .asset-modal__network-option--bsc {
   left: 12px;
-  top: 343px;
+  top: 341px;
   width: 132px;
   height: 32px;
 }
 
 .asset-modal__network-option--ethereum {
   left: 150px;
-  top: 343px;
+  top: 341px;
   width: 126px;
   height: 32px;
 }
 
 .asset-modal__network-option--base {
   left: 282px;
-  top: 343px;
+  top: 341px;
   width: 90px;
   height: 32px;
 }
 
 .asset-modal__network-option--optimism {
   left: 12px;
-  top: 417px;
+  top: 412px;
   width: 126px;
   height: 32px;
 }
 
 .asset-modal__network-option--near {
   left: 144px;
-  top: 417px;
+  top: 412px;
   width: 88px;
   height: 32px;
 }
 
 .asset-modal__network-option--stellar {
   left: 238px;
-  top: 417px;
+  top: 412px;
   width: 96px;
   height: 32px;
 }
