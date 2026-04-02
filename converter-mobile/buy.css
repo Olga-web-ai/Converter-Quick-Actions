@@ -1688,7 +1688,7 @@ body {
   height: auto;
   pointer-events: none;
   z-index: 2;
-  clip-path: inset(142px 11px calc(100% - 216px) 11px round 24px);
+  clip-path: inset(142px 11px calc(100% - 232px) 11px round 24px);
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__search-overlay {
@@ -1703,7 +1703,7 @@ body {
   height: auto;
   pointer-events: none;
   z-index: 3;
-  clip-path: inset(219px 11px calc(100% - 259px) 11px);
+  clip-path: inset(219px 11px calc(100% - 275px) 11px);
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__filters-overlay {
