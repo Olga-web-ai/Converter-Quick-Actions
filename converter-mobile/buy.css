@@ -1683,7 +1683,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: 260px;
+  top: 252px;
   display: block;
   width: 100%;
   height: auto;
@@ -1698,6 +1698,18 @@ body {
 
 .asset-modal__network-cover {
   display: none;
+}
+
+.asset-modal[data-overlay="network-open"] .asset-modal__network-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 596px;
+  height: 120px;
+  background: #ffffff;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__network-control-cover {
@@ -1847,74 +1859,11 @@ body {
   pointer-events: auto;
 }
 
-.asset-modal__network-option--ethereum {
+.asset-modal__network-option--cluster {
   left: 12px;
-  top: 264px;
-  width: 112px;
-  height: 32px;
-}
-
-.asset-modal__network-option--bsc {
-  left: 130px;
-  top: 264px;
-  width: 124px;
-  height: 32px;
-}
-
-.asset-modal__network-option--litecoin {
-  left: 260px;
-  top: 264px;
-  width: 112px;
-  height: 32px;
-}
-
-.asset-modal__network-option--tron {
-  left: 12px;
-  top: 336px;
-  width: 92px;
-  height: 32px;
-}
-
-.asset-modal__network-option--solana {
-  left: 110px;
-  top: 336px;
-  width: 112px;
-  height: 32px;
-}
-
-.asset-modal__network-option--base {
-  left: 228px;
-  top: 336px;
-  width: 90px;
-  height: 32px;
-}
-
-.asset-modal__network-option--polygon {
-  left: 324px;
-  top: 336px;
-  width: 112px;
-  height: 32px;
-}
-
-.asset-modal__network-option--newton {
-  left: 12px;
-  top: 408px;
-  width: 106px;
-  height: 32px;
-}
-
-.asset-modal__network-option--wemix {
-  left: 124px;
-  top: 408px;
-  width: 100px;
-  height: 32px;
-}
-
-.asset-modal__network-option--dogecoin {
-  left: 230px;
-  top: 408px;
-  width: 120px;
-  height: 32px;
+  top: 252px;
+  width: 360px;
+  height: 228px;
 }
 
 .browser-nav {
