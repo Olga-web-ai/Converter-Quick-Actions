@@ -1680,32 +1680,15 @@ body {
   height: auto;
 }
 
-.asset-modal__search-cover {
-  position: absolute;
-  left: 11px;
-  right: 11px;
-  top: 142px;
-  height: 74px;
-  display: none;
-  background: #ffffff;
-  border-radius: 24px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.asset-modal[data-overlay="network-open"] .asset-modal__search-cover {
-  display: block;
-}
-
 .asset-modal__search-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   display: none;
   width: 100%;
   height: auto;
   pointer-events: none;
-  z-index: 2;
-  clip-path: inset(142px 11px calc(100% - 216px) 11px round 24px);
+  z-index: 1;
 }
 
 .asset-modal[data-overlay="network-open"] .asset-modal__search-overlay {
