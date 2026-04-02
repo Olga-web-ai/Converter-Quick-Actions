@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>Converter Buy Page</title>
-    <link rel="stylesheet" href="./buy.css?v=20260402-1605" />
+    <link rel="stylesheet" href="./buy.css?v=20260402-1655" />
   </head>
   <body>
     <main class="app-shell" data-stage="boot">
@@ -248,36 +248,12 @@
                 src="./assets/screens/select-asset-exact.png"
                 alt="Asset picker screen"
               />
-              <img
-                class="asset-modal__header-image"
-                src="./assets/screens/select-asset-header-crop.png?v=20260402-1635"
-                alt=""
-                aria-hidden="true"
-              />
-              <img
-                class="asset-modal__network-image"
-                src="./assets/screens/select-asset-network-strip.png?v=20260402-1315"
-                alt=""
-                aria-hidden="true"
-              />
-              <div class="asset-modal__network-cover" aria-hidden="true"></div>
-              <div class="asset-modal__network-control-cover" aria-hidden="true"></div>
               <button class="asset-modal__close-hitbox" type="button" data-role="asset-modal-close" aria-label="Close asset picker"></button>
               <button class="asset-modal__hitbox asset-modal__hitbox--all" type="button" data-role="asset-filter" data-filter="all" aria-label="All assets"></button>
               <button class="asset-modal__hitbox asset-modal__hitbox--stable" type="button" data-role="asset-filter" data-filter="stablecoins" aria-label="Stablecoins filter"></button>
               <button class="asset-modal__hitbox asset-modal__hitbox--crypto" type="button" data-role="asset-filter" data-filter="crypto" aria-label="Crypto filter"></button>
               <button class="asset-modal__hitbox asset-modal__hitbox--network" type="button" data-role="asset-filter" data-filter="network" aria-label="Network filter"></button>
               <button class="asset-modal__selected-clear-hitbox" type="button" data-role="asset-network-clear" aria-label="Clear selected network" hidden></button>
-              <div class="asset-modal__network-trigger" data-role="asset-network-trigger" aria-hidden="true">
-                <img class="asset-modal__network-trigger-icon" data-role="asset-network-trigger-icon" src="./assets/icons/networks/arbitrum.png" alt="" hidden />
-                <span class="asset-modal__network-trigger-label" data-role="asset-network-trigger-label">Network</span>
-                <span class="asset-modal__network-trigger-chevron" aria-hidden="true">
-                  <svg viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L4 4L7 1" />
-                  </svg>
-                </span>
-              </div>
-
               <div class="asset-modal__network-options" data-role="asset-network-row" hidden>
                 <button class="asset-modal__network-option asset-modal__network-option--cluster" type="button" data-role="asset-network" data-network="solana" aria-label="Choose network"></button>
               </div>
@@ -291,6 +267,6 @@
       </section>
     </main>
 
-    <script src="./buy.js?v=20260402-1605"></script>
+    <script src="./buy.js?v=20260402-1655"></script>
   </body>
 </html>

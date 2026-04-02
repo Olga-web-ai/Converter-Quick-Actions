@@ -333,7 +333,6 @@ function updateAssetModalImage() {
   if (assetModalImage.getAttribute("src") !== nextImage) {
     assetModalImage.setAttribute("src", nextImage);
   }
-  assetModal.dataset.overlay = assetNetworkMenuOpen ? "network-open" : "default";
 }
 
 function openAssetModal() {
@@ -349,20 +348,7 @@ function openAssetModal() {
 
 function updateAssetFilterUi() {
   assetNetworkRow.hidden = !assetNetworkMenuOpen;
-  const useStaticSelectedNetwork = Boolean(selectedAssetNetwork);
-
-  assetNetworkClear.hidden = !useStaticSelectedNetwork;
-  assetNetworkTrigger.hidden = useStaticSelectedNetwork || assetNetworkMenuOpen;
-
-  if (selectedAssetNetwork) {
-    assetNetworkTriggerLabel.textContent = "Solana";
-    assetNetworkTriggerIcon.hidden = false;
-    assetNetworkTriggerIcon.setAttribute("src", "./assets/icons/networks/solana.png");
-  } else {
-    assetNetworkTriggerLabel.textContent = "Network";
-    assetNetworkTriggerIcon.hidden = true;
-    assetNetworkTriggerIcon.setAttribute("src", "");
-  }
+  assetNetworkClear.hidden = !selectedAssetNetwork;
 
   updateAssetModalImage();
 }

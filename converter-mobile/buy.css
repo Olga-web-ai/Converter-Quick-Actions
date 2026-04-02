@@ -767,7 +767,7 @@ body {
   width: 121px;
   max-width: 121px;
   height: 48px;
-  padding: 4px 36px 4px 4px;
+  padding: 4px 40px 4px 4px;
   gap: 8px;
   background: #f5f5f6;
   border-color: #ebebeb;
@@ -966,7 +966,7 @@ body {
 .converter-field--get .asset-selector__chevron {
   width: 16px;
   height: 16px;
-  transform: translateX(-10px);
+  transform: translateX(-12px);
 }
 
 .converter-field__support,
@@ -1680,34 +1680,6 @@ body {
   height: auto;
 }
 
-.asset-modal__header-image {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  display: none;
-  width: 100%;
-  height: auto;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.asset-modal[data-overlay="network-open"] .asset-modal__header-image {
-  display: block;
-}
-
-.asset-modal__network-image {
-  display: none;
-}
-
-.asset-modal__network-cover {
-  display: none;
-}
-
-.asset-modal[data-overlay="network-open"] .asset-modal__network-control-cover {
-  opacity: 0;
-}
-
 .asset-modal__close-hitbox {
   position: absolute;
   border: 0;
@@ -1777,62 +1749,6 @@ body {
   padding: 0;
   cursor: pointer;
   z-index: 4;
-}
-
-.asset-modal__network-trigger {
-  position: absolute;
-  right: 12px;
-  top: 227px;
-  height: 32px;
-  min-width: 89px;
-  max-width: 138px;
-  padding: 0 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: 21px;
-  border: 1px solid #e8e8ea;
-  background: #f6f6f7;
-  color: #23252d;
-  font: 500 12px/15px "Suisse Intl", "Inter", sans-serif;
-  letter-spacing: -0.01em;
-  z-index: 3;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.asset-modal__network-trigger-icon {
-  width: 16px;
-  height: 16px;
-  border-radius: 5px;
-  flex: 0 0 auto;
-}
-
-.asset-modal__network-trigger-label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.asset-modal__network-trigger-chevron {
-  margin-left: auto;
-  width: 10px;
-  height: 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-}
-
-.asset-modal__network-trigger-chevron svg {
-  width: 8px;
-  height: 5px;
-}
-
-.asset-modal__network-trigger-chevron path {
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 .asset-modal__network-options {
