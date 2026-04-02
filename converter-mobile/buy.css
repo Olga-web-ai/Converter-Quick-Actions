@@ -1695,6 +1695,21 @@ body {
   display: block;
 }
 
+.asset-modal__filters-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+  clip-path: inset(219px 11px calc(100% - 259px) 11px);
+}
+
+.asset-modal[data-overlay="network-open"] .asset-modal__filters-overlay {
+  display: block;
+}
+
 .asset-modal__close-hitbox {
   position: absolute;
   border: 0;
