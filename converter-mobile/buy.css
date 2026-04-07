@@ -334,6 +334,13 @@ body {
   min-height: 28px;
 }
 
+.payment-strip__image {
+  display: block;
+  width: 366px;
+  height: auto;
+  max-width: 100%;
+}
+
 .payment-strip__visa-mastercard {
   display: inline-flex;
   align-items: center;
