@@ -322,18 +322,12 @@ function closeAssetModal() {
 }
 
 function updateAssetModalImage() {
-  let nextImage = `./assets/screens/select-asset-exact.png?v=${ASSET_MODAL_VERSION}`;
-
-  if (assetNetworkMenuOpen) {
-    nextImage = `./assets/screens/select-asset-all-networks.png?v=${ASSET_MODAL_VERSION}`;
-  } else if (selectedAssetNetwork) {
-    nextImage = `./assets/screens/select-asset-network-solana.png?v=${ASSET_MODAL_VERSION}`;
-  }
+  const nextImage = `./assets/screens/select-asset-static-network-left.png?v=${ASSET_MODAL_VERSION}`;
 
   if (assetModalImage.getAttribute("src") !== nextImage) {
     assetModalImage.setAttribute("src", nextImage);
   }
-  assetModal.dataset.overlay = assetNetworkMenuOpen ? "network-open" : "default";
+  assetModal.dataset.overlay = "default";
 }
 
 function openAssetModal() {
@@ -348,8 +342,8 @@ function openAssetModal() {
 }
 
 function updateAssetFilterUi() {
-  assetNetworkRow.hidden = !assetNetworkMenuOpen;
-  assetNetworkClear.hidden = !selectedAssetNetwork;
+  assetNetworkRow.hidden = true;
+  assetNetworkClear.hidden = true;
 
   updateAssetModalImage();
 }
@@ -708,12 +702,6 @@ assetModalClosers.forEach((button) => {
 
 assetFilterButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (button.dataset.filter === "network") {
-      assetNetworkMenuOpen = !assetNetworkMenuOpen;
-      updateAssetFilterUi();
-      return;
-    }
-
     assetCategory = button.dataset.filter;
     selectedAssetNetwork = "";
     assetNetworkMenuOpen = false;

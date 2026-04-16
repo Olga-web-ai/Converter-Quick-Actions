@@ -1676,7 +1676,7 @@ body {
 .asset-modal__search-overlay {
   position: absolute;
   inset: 0;
-  display: none;
+  display: none !important;
   width: 100%;
   height: auto;
   pointer-events: none;
@@ -1691,7 +1691,7 @@ body {
 .asset-modal__filters-overlay {
   position: absolute;
   inset: 0;
-  display: none;
+  display: none !important;
   width: 100%;
   height: auto;
   pointer-events: none;
@@ -1753,14 +1753,6 @@ body {
   border-radius: 21px;
 }
 
-.asset-modal__hitbox--network {
-  right: 12px;
-  top: 219px;
-  width: 108px;
-  height: 40px;
-  border-radius: 21px;
-}
-
 .asset-modal__selected-clear-hitbox {
   position: absolute;
   top: 219px;
@@ -1779,6 +1771,15 @@ body {
   inset: 0;
   z-index: 4;
   pointer-events: none;
+}
+
+.asset-modal__network-static {
+  position: absolute;
+  left: 251px;
+  top: 219px;
+  width: 89px;
+  height: 32px;
+  z-index: 2;
 }
 
 .asset-modal__network-option {
