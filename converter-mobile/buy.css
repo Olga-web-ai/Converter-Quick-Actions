@@ -1809,6 +1809,12 @@ body {
   pointer-events: none;
 }
 
+.phone-frame[data-keyboard="visible"] .payment-strip {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
 .summary-card[data-boost="off"] .summary-card__secondary {
   color: #5734fe;
 }
