@@ -478,6 +478,12 @@ function updateSummary(fiatValue, cryptoAmount, rewardAmount, eurValue) {
     ? `+${formatReward(rewardAmount || 0)} Boost Points included`
     : "";
   summaryCta.textContent = "Buy";
+  keyboardConfirm.textContent = isLargeOrder ? "Continue" : "Buy";
+  keyboardConfirm.dataset.mode = isLargeOrder ? "large" : "default";
+  keyboardConfirm.setAttribute(
+    "aria-label",
+    isLargeOrder ? "Continue with large order flow" : "Buy",
+  );
 
   rewardPill.dataset.state = rewardsVisible ? "on" : "off";
   summaryReward.dataset.state = rewardsVisible ? "on" : "off";
